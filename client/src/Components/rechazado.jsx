@@ -10,8 +10,8 @@ function App() {
         <p>
         Su compra no se ha podido realizar satisfactoriamente
         </p>
-        <Link to={`/home`} className='HomePage'>
-                <button className='HomeButton'>volver a comprar</button>
+        <Link to={`/`} className='HomePage'>
+                <button className='HomeButton'>Volver a comprar</button>
          </Link>
 
     </div>

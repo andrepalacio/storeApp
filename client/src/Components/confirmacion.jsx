@@ -11,7 +11,7 @@ function App() {
           Su compra ha sido exitosa.
         </p>
         <Link to={`/`} className='HomePage'>
-                <button className='HomeButton'>Compra exitosa</button>
+                <button className='HomeButton'>Regresar a la página principal</button>
          </Link>
 
     </div>
