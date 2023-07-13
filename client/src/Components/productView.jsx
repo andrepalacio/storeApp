@@ -31,9 +31,9 @@ function ProductView(props) {
     });
 
     const slides = [ 
-        {url:"http://localhost:3000/1.jpg", title: 'Image 1'},
-        {url:`http://localhost:3000/2.jpg`, title: 'Image 2'},
-        {url:`http://localhost:3000/3.jpg`, title: 'Image 3'},
+        {url:"https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing", title: 'Image 1'},
+        {url:`https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing`, title: 'Image 2'},
+        {url:`https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing`, title: 'Image 3'},
     ]
 
     console.log(slides);
