@@ -1,6 +1,6 @@
 import '../Styles/login.css';
 import React, {useState} from 'react';
-import logo from '../Images/appImages/logo.jpeg';
+import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 import { Link, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -62,12 +62,12 @@ const CompShowLogin = () => { // Se define el componente.
     return ( // Estructura HTML deimport React from "react";
             <div className="container-login">
             <div className="container-logo-login">
-                <img className="logo-login" alt='Imagen Logo' src={logo} />
+                <img className="logo-login" alt='Imagen Logo' src={theLegoGarage} />
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className="containerLogin" onSubmit={handleSubmit}>
                 <div className="titulo-login">
-                    <h1>Login</h1>
+                    <h2>Ingresar</h2>
                 </div>
                 <div className="container-input">
                     <div className="user">
