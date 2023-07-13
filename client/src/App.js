@@ -43,7 +43,6 @@ function App() {
         <Route 
           path='/' 
           element={
-            accessVis? ( 
           <>
             <Header 
             idUser="1"
@@ -51,8 +50,7 @@ function App() {
             <div className='main-container'>
               <Products />
             </div>
-          </> ):
-            null} />
+          </> } />
           <Route
             path="/Home/:id"
             element={
