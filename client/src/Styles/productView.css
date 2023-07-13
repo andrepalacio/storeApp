@@ -15,7 +15,8 @@ img {
     align-items: center;
     justify-content: center;
     margin: auto;
-    border: 1px solid blue;
+    border: 1
+    px solid blue;
     width: 80vw;
     height: 60vw;
 }
@@ -45,3 +46,14 @@ img {
     align-items: center;
 }
 
+.extraImages{
+    display: flex;
+}
+
+.extraImages img{
+    width: 200px;
+    height: auto;
+    margin: 0px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}

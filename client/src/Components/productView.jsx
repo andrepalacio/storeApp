@@ -6,6 +6,9 @@ import { useState } from 'react';
 import Header from './header'; 
 import ImageSlider from './ImageSlider';
 
+import Images from '../Images/productsImages/product1/1.jpg';
+
+
 
 function ProductView(props) {
 
@@ -31,9 +34,9 @@ function ProductView(props) {
     });
 
     const slides = [ 
-        {url:"https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing", title: 'Image 1'},
-        {url:`https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing`, title: 'Image 2'},
-        {url:`https://drive.google.com/drive/folders/15Bc-cApxE6O2jXlzPV40-cr34njqUczm?usp=sharing`, title: 'Image 3'},
+        {src:`https://img.freepik.com/foto-gratis/coche-sedan-deportivo-lujo-blanco-pie-rastro-carrera-vista-frontal_114579-1161.jpg`, title: 'Image 1'},
+        {src:`../Images/productsImages/product${product.id}/2.jpg`, title: 'Image 2'},
+        {src:`../Images/productsImages/product${product.id}/3.jpg`, title: 'Image 3'}
     ]
 
     console.log(slides);
@@ -42,13 +45,21 @@ function ProductView(props) {
         <div className='mainContainer'>
             <div className='productContainer'>
                 {/* <div className='imageSlider'>
-                    <ImageSlider slides={slides}/>
+                    <ImageSlider slides={slides} />
                 </div> */}
                 <div className='productImage'>
                     <img src={require(`../Images/productsImages/product${product.id}/1.jpg`)} alt='productImage' />
                 </div>
+                {/* <div className='productImage'>
+                    <img src={import slides[0].src} alt='productImage' />
+                </div> */}
+
 
                 <div className='productInfo'>
+                    <div className='extraImages'>
+                        <img src={require(`../Images/productsImages/product${product.id}/2.jpg`)} alt='productImage' />
+                        <img src={require(`../Images/productsImages/product${product.id}/3.jpg`)} alt='productImage' />
+                    </div>
                     <div className='productName'>
                         <h1>{product.name}</h1>
                     </div>

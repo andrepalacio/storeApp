@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "../Styles/ImageSlider.css"
+import Image11 from "../Images/productsImages/product1/1.jpg";
+import Image12 from "../Images/productsImages/product1/2.jpg";
+import Image13 from "../Images/productsImages/product1/3.jpg";
 
-
-
-
-const ImageSlider = ({ slides }) => {
+const ImageSlider = ({slides}) => {
+        
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -23,9 +24,14 @@ const ImageSlider = ({ slides }) => {
     setCurrentIndex(slideIndex);
   };
 
+
   // imagen de fondo 
   const slideStylesWidthBackground = {
-    backgroundImage: `url(${slides[currentIndex].url})`
+    // backgroundImage: url({require(slides[currentIndex].src}),
+    // backgroundImage: `url(${require(ruta)})`
+    // backgroundImage: `url(${require(slides[currentIndex].src)})`
+    // backgroundImage: url(${slides[currentIndex].src})
+    backgroundImage: `url("https://img.freepik.com/foto-gratis/coche-sedan-deportivo-lujo-blanco-pie-rastro-carrera-vista-frontal_114579-1161.jpg")`
   };
 
   return (
@@ -55,3 +61,4 @@ const ImageSlider = ({ slides }) => {
 };
 
 export default ImageSlider;
+
