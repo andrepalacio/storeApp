@@ -1,56 +1,70 @@
 import mysql from "mysql"
 import { alertMail } from "./mails.js"
-
-const purchaseList = new Array;
- 
-
-const db = mysql.createConnection({
-    host    : "localhost",
-    user    : "root",
-    password: "contraseña12345",
-    database: "theStore",
-  });
-
-import mysql from "mysql";
 import Stripe from 'stripe'
 import jwt from 'jsonwebtoken';
 
-const secretWord = "mami"
+const purchaseList = new Array;
 const stripeSecret = "sk_test_51NS4P4KVzQlPajzBoWrdb25nCwhexkdZe8E1qvNIDGOaEEEvqxzzomsGg8pcGwkazZRrMyhcvWLbhiMpPl5pgHhd00S8mgl93p"
-
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "contraseña12345",
-  database: "theStore",
-});
 
 const stripe = new Stripe(stripeSecret)
 
+const secretWord = "mami"
+
+
+const db = mysql.createConnection({
+  host: "berfinp9tsh1k6yqu993-mysql.services.clever-cloud.com",
+  user: "unspl4l656azvazq",
+  password: "xIAGTQgUi7ZLBygCXJh",
+  database: "berfinp9tsh1k6yqu993",
+  port: "20379"
+});
+
+
 export const createSession = async (req, res) => {
+  const data = req.body;
+  // console.log(data);
+  const line_items = data.line_items;
+  // console.log(items);
+  // const prueba = {
+  //   items,
+  //   mode: 'payment',
+  //   success_url: 'http://localhost:9000/success',
+  //   cancel_url: 'http://localhost:9000/cancel',
+  // }
+  // console.log(prueba);
   const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          product_data: {
-            name: 'Carrito de productos',
-            description: 'Cobro por productos en el carrito',
-          },
-          currency: 'usd',
-          unit_amount: 20000, //200.00
-        },
-        quantity: 1
-      }
-    ],
+    line_items,
     mode: 'payment',
     success_url: 'http://localhost:9000/success',
     cancel_url: 'http://localhost:9000/cancel',
   })
-  return res.json(session)
+  res.json({result:session})
 }
 
+// export const createSession = async (req, res) => {
+//   const session = await stripe.checkout.sessions.create({
+//     line_items: [
+//       {
+//         price_data: {
+//           product_data: {
+//             name: 'Carrito de productos',
+//             description: 'Cobro por productos en el carrito',
+//           },
+//           currency: 'usd',
+//           unit_amount: 20000, //200.00
+//         },
+//         quantity: 1
+//       }
+//     ],
+//     mode: 'payment',
+//     success_url: 'http://localhost:9000/success',
+//     cancel_url: 'http://localhost:9000/cancel',
+//   })
+//   return res.json({result:session})
+// }
+
 function generateAccessToken(user) {
-  return jwt.sign(user, secretWord, { expiresIn: '1m' })
+  return jwt.sign(user, secretWord, { expiresIn: '100m' })
 }
 
 export const login = (req, res) => {
@@ -66,7 +80,7 @@ export const login = (req, res) => {
       res.status(500).json({ error: 'Error al verificar las credenciales' });
     } else {
       if (results.length > 0) {
-        const user = { username: requestData.name }
+        const user = { id: results[0].id, username: requestData.name }
 
         const accesToken = generateAccessToken(user);
 
@@ -87,9 +101,11 @@ export const login = (req, res) => {
             res.status(500).json({ error: 'Error al verificar las credenciales' });
           } else {
             if (results2.length > 0) {
+              const admin = { username: requestData.name }
 
+              const accesTokenAdmin = generateAccessToken(admin);
 
-              res.json({ message: 'Credenciales válidas para administrador', validation: true, rol: 'admin', id: results2[0].id });
+              res.json({ message: 'Credenciales válidas para administrador', validation: true, rol: 'admin', id: results2[0].id, accesTokenAdmin });
             } else {
               res.status(401).json({ error: 'Credenciales inválidas' });
             }
@@ -143,7 +159,7 @@ export const addCar = (nameProduct, req, res) => {
   )
 }
 
-const checkInventory = (stock, req, res) => {
+export const checkInventory = (stock, req, res) => {
   const minStock = 5, maxStock = 30;
   // const stock = product.minStock;
   if (stock >= maxStock || stock <= minStock){
@@ -160,23 +176,6 @@ export const calculatePrice = (req, res) => {
     checkInventory(purchaseList[countPos].minStock);
   }
   return prices;
-}
-  
-export const update = (req, res, ) => {
-  const id = req.params.id;
-  const requestData = req.body;
-
-  const query = 'UPDATE products SET name = ?, description = ?, amount = ?, price = ?, minStock = ? WHERE id = ?';
-  const values = [requestData.name, requestData.description, requestData.amount, requestData.price, requestData.minStock, id]
-
-  db.query(query, values, (err, result) => {
-    if (err) {
-      console.error('Error al actualizar el registo', err);
-      res.status(500).json({ error: 'Error al actualizar el registro' });
-    } else {
-      res.json({ message: 'Registro actualizado exitosamente' })
-    }
-  })
 }
 
 
