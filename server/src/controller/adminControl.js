@@ -45,51 +45,71 @@ export const administrator = async (req, res) => {
 
 
 //create a function to update the products table
-const updateProduct = (id, amount, price, minStock) => {
-  return new Promise((resolve, reject) => {
-    const query = `UPDATE amount = ?, price = ?, minStock = ? WHERE id = ?`;
-    db.query(query, [amount, price, minStock, id], (error, result) => {
-      error ? reject(error) : resolve(result);
-    });
+// const update = (id, amount, price, minStock) => {
+//   return new Promise((resolve, reject) => {
+//     const query = `UPDATE amount = ?, price = ?, minStock = ? WHERE id = ?`;
+//     db.query(query, [amount, price, minStock, id], (error, result) => {
+//       error ? reject(error) : resolve(result);
+//     });
+//   });
+// };
+
+// create a function to update the administrator table
+export const updateAdministrator = (req, res) => {
+  const { id, email, password, address, phone } = req.body;
+  const query = 'UPDATE administrators SET email = ?, password = ?, address = ?, phone = ? WHERE id = ?';
+  db.query(query, [email, password, address, phone, id], (error, result) => {
+    if (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ message: 'Administrador Actualizado' });
+    }
   });
 };
 
-//create a function to update the administrator table
-const updateAdmin = (id, email, password, address, phone) => {
-  return new Promise((resolve, reject) => {
-    const query = 'UPDATE administrators SET email = ?, password = ?, address = ?, phone = ? WHERE id = ?';
-    db.query(query, [email, password, address, phone, id], (error, result) => {
-      error ? reject(error) : resolve(result);
-    });
+export const updateProduct = (req, res) => {
+  const { id, amount, price, minStock } = req.body;
+  console.log(id, amount, price, minStock);
+  
+  const query = 'UPDATE products SET amount = ?, price = ?, minStock = ? WHERE id = ?';
+  db.query(query, [amount, price, minStock, id], (error, result) => {
+    if (error) {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ message: 'Producto Actualizado' });
+    }
   });
 };
 
-export const update = (req, res, ) => {
-  const requestData = req.body;
 
-  if (requestData.hasOwnProperty('email')) {
-    console.log(requestData.email, requestData.password, requestData.address, requestData.phone);
+// export const update = (req, res, ) => {
+//   const requestData = req.body;
+
+//   if (requestData.hasOwnProperty('email')) {
+//     console.log(requestData.email, requestData.password, requestData.address, requestData.phone);
     
-    updateAdmin(requestData.id, requestData.email, requestData.password, requestData.address, requestData.phone)
-      .then((result) => {
-        res.json({ message: "Administrador Actualizado" });
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
-      );
-  } else if (requestData.hasOwnProperty('description')) {
-    updateProduct(requestData.id, requestData.amount, requestData.price, requestData.minStock)
-      .then((result) => {
-        res.json({ message: "Producto Actualizado" });
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
-      );
-  }
-}
+//     updateAdmin(requestData.id, requestData.email, requestData.password, requestData.address, requestData.phone)
+//       .then((result) => {
+//         res.json({ message: "Administrador Actualizado" });
+//       }
+//       )
+//       .catch((err) => {
+//         console.log(err);
+//         res.status(500).json({ error: "Internal Server Error" });
+//       }
+//       );
+//   } else if (requestData.hasOwnProperty('description')) {
+//     updateProduct(requestData.id, requestData.amount, requestData.price, requestData.minStock)
+//       .then((result) => {
+//         res.json({ message: "Producto Actualizado" });
+//       }
+//       )
+//       .catch((err) => {
+//         console.log(err);
+//         res.status(500).json({ error: "Internal Server Error" });
+//       }
+//       );
+//   }
+// }
