@@ -6,7 +6,9 @@ import {Link} from 'react-router-dom';
 
 function ProductElement(props) {
     return(
+        
         <div className="ProductContainer">
+
             <div className="ProductImage">
                 <img src={require(`../Images/productsImages/product${props.idProduct}/${props.idImage}.jpg`)} alt='imagen' />
             </div>
@@ -21,7 +23,7 @@ function ProductElement(props) {
             </div>
 
             <Link to={`/product/${props.idProduct}`} className='ProductLink'>
-                <button className='ProductButton'>More Info</button>
+                <button className='ProductButton'>Comprar</button>
             </Link>
             
             

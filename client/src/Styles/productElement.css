@@ -3,43 +3,46 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 25px;
 
   }
   
-  .ProductImage {
-    margin-right: 10px;
-  }
-  
   .ProductImage img {
-    max-width: 170px;
-    height: auto;
+    max-width: 250px;
+    margin-bottom: 20px;
   }
   
   .ProductTitle h2 {
-    font-size: 18px;
+    font-size: 0.93rem;
     padding-bottom: 5px;
+    line-height: 1.3125;
     margin: 0;
   }
   
   .ProductPrice h3 {
     font-size: 20px;
     margin: 0;
+    margin-top: 10px;
     padding-bottom: 20px;
-    color: rgb(128, 128, 128);
+    color: rgb(114, 114, 114);
+    font-size: 0.93rem;
   }
   
   .ProductButton {
-    background-color: #f44336;
+    background-color: #fe8123;
     color: #fff;
-    border: none;
+    border-radius: 2%;
     padding: 8px 16px;
     font-size: 14px;
     cursor: pointer;
+    border: none;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
   }
   
   .ProductButton:hover {
-    background-color: #d32f2f;
+    background-color: #e6721a;
+    border: none;
   }
   
