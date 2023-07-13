@@ -1,14 +1,14 @@
 .container-login {
-    height: 500px;
+    height: 580px;
     width: 400px;
     margin: auto;
-    background-color: rgb(233, 233, 217);
-    border: 4px solid red;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    border-radius: 2%;
+    margin-top: 60px;
+    box-shadow: 5px 5px 20px #d6d6d6;
 }
 
 .container-logo-login {
@@ -29,10 +29,12 @@
     border-radius: 5px;
 }
 
+
 .container-input {
-    display: flex;
-    flex-flow: row nowrap;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     justify-content: center;
+    align-items: center;
+    font-size: 0.93rem;;
 }
 
 .input-login {
@@ -44,29 +46,59 @@
     background-color:#ffffff;
 }
 
+
+input {
+    padding: 8px;
+    border-radius: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+::placeholder{
+    color: #919090;
+    text-align: left;
+}
+
+.input-login {
+
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+
+}
+
+
 .container-submit {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
 .btn-submit {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    height: 40px;
-    width: 150px;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 7px;
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(241, 33, 33);
+    background-color: #fe8123;
+    color: #fff;
+    border-radius: 2%;
+    padding: 8px 16px;
+    font-size: 14px;
     cursor: pointer;
+    border: none;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
 }
 
 .btn-submit:hover {
-    background-color: #ffffff;
+    background-color: #e6721a;
+    border: none;
+
 }
+
 
 .register-link {
     display: flex;
@@ -76,7 +108,7 @@
 .register {
     width: fit-content;  
     text-align: center;
-    color: black;
+    color: #006CB6;
     cursor: pointer;
     font-style: italic;
 }

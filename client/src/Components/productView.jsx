@@ -43,6 +43,8 @@ function ProductView(props) {
         
     return(
         <div className='mainContainer'>
+
+
             <div className='productContainer'>
                 {/* <div className='imageSlider'>
                     <ImageSlider slides={slides} />
