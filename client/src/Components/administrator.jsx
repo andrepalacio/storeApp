@@ -7,18 +7,7 @@ function Administrator() {
   const [admin, setAdmin] = useState(null);
   const [displayComponent, setDisplayComponent] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:9000/administrator');
-      const data = await response.json();
-      setAdmin(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleButtonClick = (componentName) => {
-    fetchData();
     if (componentName === 'administratorForm') {
       setDisplayComponent(<AdministratorForm admin={admin.admin}/>);
     } else if (componentName === 'stock') {
@@ -27,6 +16,16 @@ function Administrator() {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:9000/administrator');
+        const data = await response.json();
+        setAdmin(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchData();
   }, []);
 

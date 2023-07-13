@@ -14,29 +14,6 @@ function Stock(productsArray) {
     setProducts(updatedProducts);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const fetchData = async () => {
-      console.log(products)
-      try {
-        const response = await fetch('http://localhost:9000/administrator', {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(products),
-        });
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  };
-
   return (
     <table>
       <thead>
@@ -89,7 +66,7 @@ function Stock(productsArray) {
               />
             </td>
             <td>
-              <button type='submit' onSubmit={handleSubmit}>Editar</button>
+              <button>Editar</button>
             </td>
           </tr>
         ))}
