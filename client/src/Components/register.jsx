@@ -2,6 +2,8 @@ import '../Styles/register.css';
 import React, {useState} from 'react'
 import logo from '../Images/appImages/logo.jpeg';
 import axios from 'axios'
+import {useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
   const [datos, setDatos] = useState({
@@ -9,6 +11,8 @@ const Register = () => {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setDatos({
@@ -30,10 +34,12 @@ const Register = () => {
     axios.post('http://localhost:9000/register', formData)
     .then((response) => {
       const data = response.data;
-      const validation = response.validation
-      console.log(response.data);
-      // Puedes realizar acciones adicionales después de enviar los datos
-      console.log(validation);
+      const validation = data.validation
+
+      if(validation){
+        navigate('/login')
+      }
+      
     })
     .catch((error) => {
       console.error(error);

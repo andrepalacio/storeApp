@@ -5,12 +5,14 @@ import Data from '../data.json';
 
 import '../Styles/products.css';
 import { useState } from 'react';
-
-
+import { useParams } from 'react-router-dom';
+ 
 const Products = () => {
 
+    const {id} = useParams();
     const [data, setData] = useState(Data);
-    
+    console.log(id);
+
     return ( // Estructura HTML del componente.
 
     data.products.map ( product => (

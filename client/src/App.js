@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 //COMPONENTS IMPORT
 import Header from './Components/header';
-import Products from './Components/home';
+import Products from './Components/Products';
 // import ProductElement from './Components/productElement';
 import Register from './Components/register';
 import Login from './Components/login';
@@ -21,19 +21,23 @@ function App() {
   const [accessToken, setAccessToken] = useState('');
 
   const [accessVis, setAccessVis] = useState('');
+  //const accessVis = localStorage.getItem('accessVis')
+  console.log(accessVis);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
     
     const storedVis = localStorage.getItem('accessVis');
+    console.log(storedVis);
 
     if (storedToken) {
       setAccessToken(storedToken);
     }
 
-    if (storedVis){
-      setAccessVis(storedVis);
-    }
+     if (storedVis){
+       setAccessVis(storedVis);
+       console.log(accessVis);
+     }
   }, []);
 
   return (
@@ -49,23 +53,9 @@ function App() {
             <div className='main-container'>
               <Products />
             </div>
-          </> } />
-          <Route
-            path="/Home/:id"
-            element={
-              accessToken ? (
-               <>
-                <Header />
-                <div className="main-container"> 
-                  <Products2 />
-                  <h1>Ya estás registrado</h1>
-                </div>
-              </>
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
+          </> } 
         />
+          
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/viewUser'/>

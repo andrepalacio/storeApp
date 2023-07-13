@@ -34,6 +34,9 @@ const CompShowLogin = () => { // Se define el componente.
         .then((response) => {
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
+          const accessVis = 'potacio'
+
+          localStorage.setItem('accessVis', accessVis);
           console.log(response.data.accessToken);
           // Puedes realizar acciones adicionales después de enviar los datos
           if (response.data.validation){
