@@ -64,7 +64,7 @@ export const createSession = async (req, res) => {
 // }
 
 function generateAccessToken(user) {
-  return jwt.sign(user, secretWord, { expiresIn: '100m' })
+  return jwt.sign(user, secretWord, { expiresIn: '10m' })
 }
 
 export const login = (req, res) => {
@@ -80,7 +80,7 @@ export const login = (req, res) => {
       res.status(500).json({ error: 'Error al verificar las credenciales' });
     } else {
       if (results.length > 0) {
-        const user = { username: requestData.name }
+        const user = { username: requestData.name, id: results[0].id }
 
         const accesToken = generateAccessToken(user);
 
@@ -91,7 +91,7 @@ export const login = (req, res) => {
 
         // Almacena el token en el localStorage
 
-        res.json({ message: 'Credenciales válidas', validation: true, rol: 'user', id: results[0].id, accesToken });
+        res.json({ message: 'Credenciales válidas', validation: true, rol: 'user', id: results[0].id, accesToken, username: results[0].name });
       } else {
         // Si no se encuentran resultados en la primera consulta, hacer otra consulta en otra tabla
 
@@ -114,6 +114,10 @@ export const login = (req, res) => {
       }
     }
   });
+}
+
+export const logout = (req, res) =>{
+  
 }
 
 export const sigin = (req, res) => {

@@ -2,6 +2,7 @@ import '../Styles/register.css';
 import React, {useState} from 'react'
 import logo from '../Images/appImages/logo.jpeg';
 import axios from 'axios'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Register = () => {
   const [datos, setDatos] = useState({
@@ -9,6 +10,8 @@ const Register = () => {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setDatos({
@@ -34,6 +37,7 @@ const Register = () => {
       console.log(response.data);
       // Puedes realizar acciones adicionales después de enviar los datos
       console.log(validation);
+      navigate('/login')
     })
     .catch((error) => {
       console.error(error);

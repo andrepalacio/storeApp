@@ -35,10 +35,12 @@ const CompShowLogin = () => { // Se define el componente.
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
           console.log(response.data.accessToken);
+          localStorage.setItem('id', response.data.id)
+          localStorage.setItem('username', response.data.username)
           // Puedes realizar acciones adicionales después de enviar los datos
           if (response.data.validation){
             if (response.data.rol === 'user'){
-              navigate(`/Home/${response.data.id}`);
+              navigate('/');
             } else if (response.data.rol === 'admin'){
               navigate('/admin')
             }

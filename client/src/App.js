@@ -39,22 +39,7 @@ function App() {
               <Products />
             </div>
           </> } />
-          <Route
-          path="/Home/:id"
-          element={
-            accessToken ? (
-              <>
-                <Header />
-                <div className="main-container">
-                  <Products2 />
-                  <h1>Ya estás registrado</h1>
-                </div>
-              </>
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+          
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/viewUser'/>
