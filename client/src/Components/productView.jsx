@@ -18,7 +18,7 @@ function ProductView(props) {
 
    
     data.products.map((current) => {
-        if (current.id == idProduct.id){
+        if (current.id === idProduct.id){
             product = {
                 "id": current.id,
                 "name": current.name,
@@ -61,7 +61,7 @@ function ProductView(props) {
                     <div className='productButton'>
                         <div></div>
                         <input type='number'/>
-                        <Link to={`/cart`} className='ProductLink'>
+                        <Link to={`/login`} className='ProductLink'>
                             <button>Agregar al Carrito</button>
                         </Link>
                     </div>

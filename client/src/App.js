@@ -21,17 +21,29 @@ function App() {
   
   const [accessToken, setAccessToken] = useState('');
 
+  const [accessVis, setAccessVis] = useState('');
+
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
+    
+    const storedVis = localStorage.getItem('accessVis');
+
     if (storedToken) {
       setAccessToken(storedToken);
+    }
+
+    if (storedVis){
+      setAccessVis(storedVis);
     }
   }, []);
 
   return (
     <Router>
       <Routes>
-        <Route path='/' element={  
+        <Route 
+          path='/' 
+          element={
+            accessVis? ( 
           <>
             <Header 
             idUser="1"
@@ -39,14 +51,15 @@ function App() {
             <div className='main-container'>
               <Products />
             </div>
-          </> } />
+          </> ):
+            null} />
           <Route
-          path="/Home/:id"
-          element={
-            accessToken ? (
-              <>
+            path="/Home/:id"
+            element={
+              accessToken ? (
+               <>
                 <Header />
-                <div className="main-container">
+                <div className="main-container"> 
                   <Products2 />
                   <h1>Ya estás registrado</h1>
                 </div>
