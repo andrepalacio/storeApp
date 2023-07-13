@@ -4,7 +4,7 @@ import cors from 'cors'
 
 import {checkInventory, login, sigin, createSession} from "../controller/formControllers.js"
 
-import {administrator, updateAdministrator, updateProduct} from "../controller/adminControl.js"
+import {administrator, update} from "../controller/adminControl.js"
 
 
 const router = Router()
@@ -22,11 +22,9 @@ router.post('/register',sigin)
 
 router.post('/login', login);
 
-router.put('/administrator', updateAdministrator);
-
-router.patch('/administrator', updateProduct);
-
 router.get('/administrator', administrator);
+
+router.put('/administrator', update);
 
 router.get('/create-checkout-session', createSession)
 
