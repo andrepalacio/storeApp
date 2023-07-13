@@ -4,7 +4,6 @@ import Stripe from 'stripe'
 import jwt from 'jsonwebtoken';
 
 const purchaseList = new Array;
-
 const stripeSecret = "sk_test_51NS4P4KVzQlPajzBoWrdb25nCwhexkdZe8E1qvNIDGOaEEEvqxzzomsGg8pcGwkazZRrMyhcvWLbhiMpPl5pgHhd00S8mgl93p"
 
 const stripe = new Stripe(stripeSecret)
@@ -13,37 +12,59 @@ const secretWord = "mami"
 
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "contraseña12345",
-  database: "theStore",
+  host: "berfinp9tsh1k6yqu993-mysql.services.clever-cloud.com",
+  user: "unspl4l656azvazq",
+  password: "xIAGTQgUi7ZLBygCXJh",
+  database: "berfinp9tsh1k6yqu993",
+  port: "20379"
 });
 
 
 export const createSession = async (req, res) => {
+  const data = req.body;
+  // console.log(data);
+  const line_items = data.line_items;
+  // console.log(items);
+  // const prueba = {
+  //   items,
+  //   mode: 'payment',
+  //   success_url: 'http://localhost:9000/success',
+  //   cancel_url: 'http://localhost:9000/cancel',
+  // }
+  // console.log(prueba);
   const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          product_data: {
-            name: 'Carrito de productos',
-            description: 'Cobro por productos en el carrito',
-          },
-          currency: 'usd',
-          unit_amount: 20000, //200.00
-        },
-        quantity: 1
-      }
-    ],
+    line_items,
     mode: 'payment',
     success_url: 'http://localhost:9000/success',
     cancel_url: 'http://localhost:9000/cancel',
   })
-  return res.json(session)
+  res.json({result:session})
 }
 
+// export const createSession = async (req, res) => {
+//   const session = await stripe.checkout.sessions.create({
+//     line_items: [
+//       {
+//         price_data: {
+//           product_data: {
+//             name: 'Carrito de productos',
+//             description: 'Cobro por productos en el carrito',
+//           },
+//           currency: 'usd',
+//           unit_amount: 20000, //200.00
+//         },
+//         quantity: 1
+//       }
+//     ],
+//     mode: 'payment',
+//     success_url: 'http://localhost:9000/success',
+//     cancel_url: 'http://localhost:9000/cancel',
+//   })
+//   return res.json({result:session})
+// }
+
 function generateAccessToken(user) {
-  return jwt.sign(user, secretWord, { expiresIn: '1m' })
+  return jwt.sign(user, secretWord, { expiresIn: '100m' })
 }
 
 export const login = (req, res) => {
