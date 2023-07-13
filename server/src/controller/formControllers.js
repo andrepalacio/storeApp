@@ -80,7 +80,7 @@ export const login = (req, res) => {
       res.status(500).json({ error: 'Error al verificar las credenciales' });
     } else {
       if (results.length > 0) {
-        const user = { username: requestData.name }
+        const user = { id: results[0].id, username: requestData.name }
 
         const accesToken = generateAccessToken(user);
 
@@ -176,23 +176,6 @@ export const calculatePrice = (req, res) => {
     checkInventory(purchaseList[countPos].minStock);
   }
   return prices;
-}
-  
-export const update = (req, res, ) => {
-  const id = req.params.id;
-  const requestData = req.body;
-
-  const query = 'UPDATE products SET name = ?, description = ?, amount = ?, price = ?, minStock = ? WHERE id = ?';
-  const values = [requestData.name, requestData.description, requestData.amount, requestData.price, requestData.minStock, id]
-
-  db.query(query, values, (err, result) => {
-    if (err) {
-      console.error('Error al actualizar el registo', err);
-      res.status(500).json({ error: 'Error al actualizar el registro' });
-    } else {
-      res.json({ message: 'Registro actualizado exitosamente' })
-    }
-  })
 }
 
 
