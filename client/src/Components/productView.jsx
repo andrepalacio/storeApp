@@ -1,84 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Styles/productView.css';
 import { Link, useParams } from 'react-router-dom';
-import  Data from '../data.json';
-import { useState } from 'react';
-import Header from './header'; 
-import ImageSlider from './ImageSlider';
-
+import Data from '../data.json';
+import Header from './header';
 
 function ProductView(props) {
+  const idProduct = useParams();
+  const [data, setData] = useState(Data);
+  const [quantity, setQuantity] = useState(1);
 
-    const idProduct = useParams();
-    console.log(idProduct);
+  let product = {};
 
-    const [data,setData] = useState(Data);
+  data.products.map((current) => {
+    if (current.id == idProduct.id) {
+      product = {
+        id: current.id,
+        name: current.name,
+        price: current.price,
+        description: current.description,
+        amount: current.amount,
+      };
+    }
+  });
 
-    let product = {};
+  const handleIncrease = () => {
+    if (quantity < product.amount) {
+      setQuantity(quantity + 1);
+    }
+  };
 
-   
-    data.products.map((current) => {
-        if (current.id == idProduct.id){
-            product = {
-                "id": current.id,
-                "name": current.name,
-                "price": current.price,
-                "description": current.description,
-                "amount": current.amount
-            };
-            console.log(product);
-        }
-    });
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
-    const slides = [ 
-        {url:"http://localhost:3000/1.jpg", title: 'Image 1'},
-        {url:`http://localhost:3000/2.jpg`, title: 'Image 2'},
-        {url:`http://localhost:3000/3.jpg`, title: 'Image 3'},
-    ]
-
-    console.log(slides);
-        
-    return(
-        <div className='mainContainer'>
-
-
-            <div className='productContainer'>
-                {/* <div className='imageSlider'>
-                    <ImageSlider slides={slides}/>
-                </div> */}
-                <div className='productImage'>
-                    <img src={require(`../Images/productsImages/product${product.id}/1.jpg`)} alt='productImage' />
-                </div>
-
-                <div className='productInfo'>
-                    <div className='productName'>
-                        <h1>{product.name}</h1>
-                    </div>
-                    <div className='productPrice'>
-                        <h2>{product.price}</h2>
-                    </div>
-                    <div className='productAmount'>
-                        <h3>Disponibles: {product.amount}</h3>
-                    </div>
-                    <div className='productButton'>
-                        <div></div>
-                        <input type='number'/>
-                        <Link to={`/cart`} className='ProductLink'>
-                            <button>Agregar al Carrito</button>
-                        </Link>
-                    </div>
-
-                </div>
-            </div>
-
-            <div className='productDescription'>
-                    <p>{product.description}</p>
-            </div>
-
+  return (
+    <div className="mainContainer">
+      <div className="productContainer">
+        <div className="productImage">
+          <img
+            src={require(`../Images/productsImages/product${product.id}/1.jpg`)}
+            alt="productImage"
+          />
         </div>
-    );
-    
 
+        <div className="productInfo">
+          <div className="productName">
+            <h1>{product.name}</h1>
+          </div>
+          <div className="productPrice">
+            <h2>{product.price}</h2>
+          </div>
+          <div className="productAmount">
+            <h3>Disponibles: {product.amount}</h3>
+          </div>
+          <div className="productQuantity">
+            <button className="quantityButton" onClick={handleDecrease}>
+              -
+            </button>
+            <input type="number" value={quantity} readOnly />
+            <button className="quantityButton" onClick={handleIncrease}>
+              +
+            </button>
+          </div>
+          <div className="productButton">
+            <div></div>
+            <Link to={`/cart`} className="ProductLink">
+              <button>Agregar al Carrito</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="productDescription">
+        <p>{product.description}</p>
+      </div>
+    </div>
+  );
 }
 
 export default ProductView;
