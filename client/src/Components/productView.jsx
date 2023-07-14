@@ -47,21 +47,29 @@ function ProductView(props) {
     useEffect(() => {
         handleImportImages();
     }, []);
-    // console.log(image1, image2, image3);
+    
 
-   
-    data.products.map((current) => {
-        if (current.id == idProduct.id){
-            product = {
-                "id": current.id,
-                "name": current.name,
-                "price": current.price,
-                "description": current.description,
-                "amount": current.amount
-            };
-            console.log(product);
+    //-------------------------------------------------------------------------
+    const [products, setProducts] = useState([]);
+
+    const fetchProduct = async () => {
+        try {
+          const response = await fetch(`http://localhost:9000/productsList/${idProduct.id}`);
+          const products = await response.json();
+          setProducts(products[0]);
+          console.log(products[0]);
+        } catch (error) {
+          console.log(error);
         }
-    });
+      };
+
+    useEffect(() => {
+        fetchProduct();
+        }, []);
+
+
+
+    //-------------------------------------------------------------------------
 
     const handleDecrease = () => {
         if (quantity > 1) {
@@ -81,7 +89,7 @@ function ProductView(props) {
         setSelectedImage(event.target.value);
       };
 
-      const [quantity, setQuantity] = useState(0);
+      const [quantity, setQuantity] = useState(1);
 
     return( 
         <>   
@@ -101,30 +109,30 @@ function ProductView(props) {
                         <img src={(selectedImage)} alt='productImage' />
                     </div>
                     <div className='extraImages'>
-                        <label for='Image1'>
-                            <img src={require(`../Images/productsImages/product${product.id}/1.jpg`)} alt='productImage' />
+                        <label htmlFor='Image1'>
+                            <img src={require(`../Images/productsImages/product${idProduct.id}/1.jpg`)} alt='productImage' />
                         </label>
-                        <label for='Image2'>
-                            <img src={require(`../Images/productsImages/product${product.id}/2.jpg`)} alt='productImage' />
+                        <label htmlFor='Image2'>
+                            <img src={require(`../Images/productsImages/product${idProduct.id}/2.jpg`)} alt='productImage' />
                         </label>
-                        <label for='Image3'>
-                            <img src={require(`../Images/productsImages/product${product.id}/3.jpg`)} alt='productImage' />
+                        <label htmlFor='Image3'>
+                            <img src={require(`../Images/productsImages/product${idProduct.id}/3.jpg`)} alt='productImage' />
                         </label>
                     </div>
                 </div>
 
                 <div className='productInfo'>
                     <div className='productName'>
-                        <h2>{product.name}</h2>
+                        <h1>{products.name}</h1>
                     </div>
                     <div className='productDescription'>
-                    <p>{product.description}</p>
-                 </div>
+                        <p>{products.description}</p>
+                    </div>
                     <div className='productPrice'>
-                        <h2>${product.price}</h2>
+                        <h2>${products.price}</h2>
                     </div>
                     <div className='productAmount'>
-                        <h3>Disponibles: {product.amount}</h3>
+                        <h3>Disponibles: {products.amount}</h3>
                     </div>
                     <div className="productQuantity">
                             <button onClick={handleDecrease}>-</button>

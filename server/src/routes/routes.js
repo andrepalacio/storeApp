@@ -6,6 +6,9 @@ import {checkInventory, login, sigin, createSession, logout} from "../controller
 
 import {administrator, update} from "../controller/adminControl.js"
 
+import { getProducts, getProductsById } from "../controller/productControl.js"
+
+
 
 const router = Router()
 
@@ -32,6 +35,8 @@ router.get('/success')
 
 router.get('/cancel')
 
-router.post('/logout', logout)
+router.get('/productsList', getProducts)
+
+router.get('/productsList/:id', getProductsById)
 
 export default router

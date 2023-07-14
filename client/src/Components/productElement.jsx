@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 function ProductElement(props) {
     return(
-        
+
         <div className="ProductContainer">
 
             <div className="ProductImage">
