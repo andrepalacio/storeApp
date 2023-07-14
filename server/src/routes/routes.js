@@ -6,6 +6,8 @@ import {login, sigin, createSession} from "../controller/formControllers.js"
 
 import {administrator, update} from "../controller/adminControl.js"
 
+import {addCar, removeCar, calculatePrice, cancelPurchaseList, cleanPurchaseList} from "../controller/controlCar.js"
+
 
 const router = Router()
 

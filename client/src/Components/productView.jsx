@@ -52,6 +52,31 @@ function ProductView(props) {
 
     const handleClick = () => {
         if (localStorage.getItem('accessToken')){
+            //Agregar al carrito
+            const userId = JSON.parse(localStorage.getItem('id'));
+            const productId = idProduct.id;
+            const productAmount = document.querySelector('input[type="number"]').value;
+            const productData = {
+                "userId": userId,
+                "productId": productId,
+                "productAmount": productAmount
+            };
+            console.log(productData);
+            fetch('http://localhost:9000/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            }).catch(error => {
+                console.log(error);
+            });
+
+
             navigate('/cart')
         }else{
             navigate('/login')
