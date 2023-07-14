@@ -143,7 +143,7 @@ function ProductView(props) {
                         <div></div>
                         <input type='number'/>
                         
-                            <button onClick={handleClick}>Agregar al Carrito</button>
+                            <button className='btn-submit' onClick={handleClick}>Agregar al Carrito</button>
                     </div>
 
                 </div>
