@@ -8,6 +8,9 @@ import {administrator, update} from "../controller/adminControl.js"
 
 import {addCar, removeCar, calculatePrice, cancelPurchaseList, cleanPurchaseList} from "../controller/controlCar.js"
 
+import { getProducts, getProductsById } from "../controller/productControl.js"
+
+
 
 const router = Router()
 
@@ -39,5 +42,9 @@ router.post('/cart/remove', removeCar)
 router.post('/cart/cancel', cancelPurchaseList)
 
 // router.post('/logout', logout)
+
+router.get('/productsList', getProducts)
+
+router.get('/productsList/:id', getProductsById)
 
 export default router

@@ -1,21 +1,38 @@
 import '../Styles/products.css';
 import ProductElement from './productElement'
 
-import Data from '../data.json';
+//import Data from '../data.json';
 
 import '../Styles/products.css';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import axios from 'axios';
 
 
 const Products = () => {
 
-    const [data, setData] = useState(Data);
+
+    const [products,setData] = useState([]);
+
+    const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:9000/productsList');
+          const products = await response.json();
+          setData(products);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      useEffect(() => {
+        fetchData();
+        }, []);
+    
+
     
     return ( // Estructura HTML del componente.
 
     
-
-    data.products.map ( product => (
+    products.map ( product => (
         <div className='item'>
         <ProductElement 
             productName= {product.name}
