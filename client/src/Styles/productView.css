@@ -16,7 +16,8 @@ img {
     align-items: center;
     justify-content: center;
     margin: auto;
-    border: 1px solid blue;
+    border: 1
+    px solid blue;
     width: 80vw;
     height: 60vw;
 }
@@ -46,6 +47,19 @@ img {
     align-items: center;
 }
 
+.extraImages{
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.extraImages img{
+    width: 100px;
+    height: auto;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
 
 .textHeader{
     font-size: 0.9rem;
@@ -71,3 +85,9 @@ img {
     position: relative;
     top: 0px;
   }
+
+#Image1,
+#Image2,
+#Image3{
+    display: none;
+}
