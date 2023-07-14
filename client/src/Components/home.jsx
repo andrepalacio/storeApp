@@ -13,6 +13,8 @@ const Products = () => {
     
     return ( // Estructura HTML del componente.
 
+    
+
     data.products.map ( product => (
         <div className='item'>
         <ProductElement 

@@ -14,7 +14,31 @@ function Stock(productsArray) {
     setProducts(updatedProducts);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const fetchData = async () => {
+      console.log(products)
+      try {
+        const response = await fetch('http://localhost:9000/administrator', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(products),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  };
+
   return (
+    <form onSubmit={handleSubmit}>
     <table>
       <thead>
         <tr>
@@ -72,6 +96,7 @@ function Stock(productsArray) {
         ))}
       </tbody>
     </table>
+    </form>
   );
 }
 
