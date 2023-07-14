@@ -40,6 +40,8 @@ router.post('/cart/add', addCar)
 
 router.post('/cart/remove', removeCar)
 
+router.post('/cart/cancel', cancelPurchaseList)
+
 // router.post('/logout', logout)
 
 export default router
