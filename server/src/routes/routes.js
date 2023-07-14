@@ -29,10 +29,40 @@ router.get('/administrator', administrator);
 
 router.put('/administrator', update);
 
-router.post('/checkout', createSession)
+router.post(' ', createSession)
 
 router.get('/productsList', getProducts)
 
 router.get('/productsList/:id', getProductsById)
 
 export default router
+
+/*
+
+router.post('/register',sigin)
+
+router.post('/login', login);
+
+router.get('/administrator', administrator);
+
+router.put('/administrator', update);
+
+router.post('/checkout', createSession)
+
+router.get('/cart/calculate', calculatePrice)
+
+router.post('/cart/add', addCar)
+
+router.post('/cart/remove', removeCar)
+
+router.post('/cart/cancel', cancelPurchaseList)
+
+router.post('/cart/success', cleanPurchaseList)
+
+// router.post('/logout', logout)
+
+router.get('/productsList', getProducts)
+
+router.get('/productsList/:id', getProductsById)
+
+*/
