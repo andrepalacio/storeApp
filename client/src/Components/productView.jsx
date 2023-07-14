@@ -39,7 +39,7 @@ function ProductView(props) {
 
    
     data.products.map((current) => {
-        if (current.id == idProduct.id){
+        if (current.id === idProduct.id){
             product = {
                 "id": current.id,
                 "name": current.name,
