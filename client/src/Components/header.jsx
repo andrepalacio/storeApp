@@ -19,7 +19,7 @@ const Header = (props) => {
         </a>
 
         <div className="title">
-          <a href='#'>THE LEGO GARAGE</a>
+          <a href=''>THE LEGO GARAGE</a>
         </div>
 
 
