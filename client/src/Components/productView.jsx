@@ -1,24 +1,19 @@
 import React from 'react';
 import '../Styles/productView.css';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
-import Header from './header'; 
-
+import Header from './header';
 
 
 function ProductView(props) {
 
     const navigate = useNavigate();
-
     const idProduct = useParams();
     console.log(idProduct);
 
     const [data,setData] = useState(Data);
-
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
+    const [quantity, setQuantity] = useState(1);
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
@@ -32,18 +27,17 @@ function ProductView(props) {
       setSelectedImage(module1.default);
       setImage1(module1.default);
       setImage2(module2.default);
-      setImage3(module3.default);
-
       
+      setImage3(module3.default);
     };
-
+    
 
     let product = {};
     useEffect(() => {
         handleImportImages();
     }, []);
-    // console.log(image1, image2, image3);
 
+    const [selectedImage, setSelectedImage] = useState(image1);
    
     data.products.map((current) => {
         if (current.id == idProduct.id){
@@ -57,10 +51,52 @@ function ProductView(props) {
             console.log(product);
         }
     });
-    const [selectedImage, setSelectedImage] = useState(image1);
+
+    const handleClick = () => {
+        if (localStorage.getItem('accessToken')){
+            //Agregar al carrito
+            const userId = JSON.parse(localStorage.getItem('id'));
+            const productId = idProduct.id;
+            const productAmount = document.querySelector('input[type="number"]').value;
+            const productData = {
+                "userId": userId,
+                "productId": productId,
+                "productAmount": productAmount
+            };
+            console.log(productData);
+            fetch('http://localhost:9000/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            }).catch(error => {
+                console.log(error);
+            });
+            navigate('/cart')
+        }else{
+            navigate('/login')
+        }
+    }
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
+      };
+
+      const handleDecrease = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+        }
+      };
+    
+      const handleIncrease = () => {
+        if (quantity < product.amount) {
+          setQuantity(quantity + 1);
+        }
       };
 
     return(
@@ -92,29 +128,33 @@ function ProductView(props) {
                 </div>
 
                 <div className='productInfo'>
-                    
                     <div className='productName'>
-                        <h1>{product.name}</h1>
+                        <h2>{product.name}</h2>
                     </div>
+                    <div className='productDescription'>
+                    <p>{product.description}</p>
+                 </div>
                     <div className='productPrice'>
                         <h2>${product.price}</h2>
                     </div>
                     <div className='productAmount'>
                         <h3>Disponibles: {product.amount}</h3>
                     </div>
+                    <div className="productQuantity">
+                            <button onClick={handleDecrease}>-</button>
+                            <span>{quantity}</span>
+                            <button onClick={handleIncrease}>+</button>
+                    </div>
                     <div className='productButton'>
                         <div></div>
                         <input type='number'/>
-                        
-                            <button onClick={handleClick}>Agregar al Carrito</button>
+                        <button onClick={handleClick}>Agregar al carrito</button>
                     </div>
 
                 </div>
             </div>
 
-            <div className='productDescription'>
-                    <p>{product.description}</p>
-            </div>
+           
 
         </div>
     );

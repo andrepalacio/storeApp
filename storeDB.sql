@@ -58,3 +58,21 @@ insert into administrators (name, password, email, address, phone)
 values ("andres", "decode@810", "andres.palacio@utp.edu.co", "pereira", 3013004022);
 insert into administrators (name, password, email, address, phone)
 values ("jefferson", "hacking#77", "david.arteaga@utp.edu.co", "dosquebradas", 3185002087);
+
+create table userCar (  
+    id int auto_increment primary key,  
+    userId int,
+    date datetime,
+    foreign key (userId) references users (id)
+);
+
+create table purchaseList (
+	id int auto_increment primary key,
+    carId int,
+    productId int,
+    amount int,
+    foreign key (carId) references userCar (id),
+    foreign key (productId) references products (id)
+);
+
+show tables;

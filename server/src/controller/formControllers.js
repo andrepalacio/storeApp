@@ -58,11 +58,6 @@ export const login = (req, res) => {
 
         const accesToken = generateAccessToken(user);
 
-        //res.header('authorization', accesToken).json({
-        //message: 'Usuario autenticado',
-        //token: accesToken
-        //})
-
         // Almacena el token en el localStorage
 
         res.json({ message: 'Credenciales válidas', validation: true, rol: 'user', id: results[0].id, accesToken });
