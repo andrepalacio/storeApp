@@ -13,10 +13,7 @@ function ProductView(props) {
     console.log(idProduct);
 
     const [data,setData] = useState(Data);
-
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
+    const [quantity, setQuantity] = useState(1);
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
@@ -32,9 +29,6 @@ function ProductView(props) {
       setImage2(module2.default);
       
       setImage3(module3.default);
-
-    
-
     };
     
 
@@ -42,6 +36,8 @@ function ProductView(props) {
     useEffect(() => {
         handleImportImages();
     }, []);
+
+    const [selectedImage, setSelectedImage] = useState(image1);
    
     data.products.map((current) => {
         if (current.id == idProduct.id){
@@ -56,15 +52,52 @@ function ProductView(props) {
         }
     });
 
-    const [selectedImage, setSelectedImage] = useState(image1);
+    const handleClick = () => {
+        if (localStorage.getItem('accessToken')){
+            //Agregar al carrito
+            const userId = JSON.parse(localStorage.getItem('id'));
+            const productId = idProduct.id;
+            const productAmount = document.querySelector('input[type="number"]').value;
+            const productData = {
+                "userId": userId,
+                "productId": productId,
+                "productAmount": productAmount
+            };
+            console.log(productData);
+            fetch('http://localhost:9000/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            }).catch(error => {
+                console.log(error);
+            });
+            navigate('/cart')
+        }else{
+            navigate('/login')
+        }
+    }
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
       };
 
-
-
-
+      const handleDecrease = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+        }
+      };
+    
+      const handleIncrease = () => {
+        if (quantity < product.amount) {
+          setQuantity(quantity + 1);
+        }
+      };
 
     return(
         <div className='mainContainer'>
@@ -124,7 +157,6 @@ function ProductView(props) {
            
 
         </div>
-        </>
     );
     
 
