@@ -33,14 +33,6 @@ function ProductView(props) {
 
     };
     
-    const handleClick = () => {
-        if (localStorage.getItem('accessToken')){
-            navigate('/cart')
-        }else{
-            navigate('/login')
-        }
-    }
-    
 
     let product = {};
     useEffect(() => {
