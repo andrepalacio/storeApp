@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/productView.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState } from 'react';
 import Header from './header'; 
@@ -8,6 +8,8 @@ import ImageSlider from './ImageSlider';
 
 
 function ProductView(props) {
+
+    const navigate = useNavigate();
 
     const idProduct = useParams();
     console.log(idProduct);
@@ -37,6 +39,14 @@ function ProductView(props) {
     ]
 
     console.log(slides);
+
+    const handleClick = () => {
+        if (localStorage.getItem('accessToken')){
+            navigate('/cart')
+        }else{
+            navigate('/login')
+        }
+    }
         
     return(
         <div className='mainContainer'>
@@ -61,9 +71,8 @@ function ProductView(props) {
                     <div className='productButton'>
                         <div></div>
                         <input type='number'/>
-                        <Link to={`/cart`} className='ProductLink'>
-                            <button>Agregar al Carrito</button>
-                        </Link>
+                        
+                            <button onClick={handleClick}>Agregar al Carrito</button>
                     </div>
 
                 </div>

@@ -20,6 +20,8 @@ function App() {
   
   const [accessToken, setAccessToken] = useState('');
 
+  //const navigate = useNavigate()
+
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
     if (storedToken) {
@@ -43,7 +45,13 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/viewUser'/>
-        <Route path='/cart' element={<Cart />} />
+        <Route 
+          path='/cart' 
+          element={
+            accessToken ? 
+            <Cart />
+            : <Navigate to="/"/>
+            } />
         <Route path='/admin' element={<Administrator />} />
         <Route path='/viewProduct' element={<ProductView />} />
         <Route path='/product/:id' element={<ProductView />}/>
