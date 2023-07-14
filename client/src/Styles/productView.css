@@ -11,9 +11,6 @@ p {
     background-color: #fff;
 }
 
-h2 {
-    background-color: beige;
-}
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
@@ -65,7 +62,7 @@ h2 {
     display: relative;
     flex: 1;
     text-align: center;
-    color: white;
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
   }
   
