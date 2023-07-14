@@ -12,20 +12,20 @@ const Header = (props) => {
   const userId = localStorage.getItem('id')
   const navigate = useNavigate()
 
-    const handleClickLogout = () => {
-      localStorage.removeItem('username')
-      localStorage.removeItem('accessToken')
-      localStorage.removeItem('id')
+  const handleClickLogout = () => {
+    localStorage.removeItem('username')
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('id')
 
-      navigate('/')
-    } 
-  
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    navigate('/')
+  };
 
-    // Función para cambiar el estado de isButtonDisabled
-    const toggleButton = () => {
-      setIsButtonDisabled(!isButtonDisabled);
-    };
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  // Función para cambiar el estado de isButtonDisabled
+  const toggleButton = () => {
+    setIsButtonDisabled(!isButtonDisabled);
+  };
 
   return (
     <header className="container-header">
@@ -41,23 +41,24 @@ const Header = (props) => {
           </div>
         </a>
 
-      <div className="actions">
-        <div className='nameMessage'>
-          <h3>Bienvenido {userVar} {userId}!</h3>
-        </div>
+        <div className="actions">
+          <div className='nameMessage'>
+            <h3>Bienvenido {userVar} {userId}!</h3>
+          </div>
 
-        <div className="link">
-          <button disabled={isButtonDisabled} onClick={toggleButton}>
-            <BsPerson size={30} />
-          </button>
-        </div>
-        <div className="link">
-          <button><BsBag size={24} />
-            <span className='item_total'>0</span>
-          </button>
-        </div>
-        <div className='link'>
-          <button onClick={handleClickLogout}><BsFillArrowLeftCircleFill size={30} /></button>
+          <div className="link">
+            <button disabled={isButtonDisabled} onClick={toggleButton}>
+              <BsPerson size={30} />
+            </button>
+          </div>
+          <div className="link">
+            <button><BsBag size={24} />
+              <span className='item_total'>0</span>
+            </button>
+          </div>
+          <div className='link'>
+            <button onClick={handleClickLogout}><BsFillArrowLeftCircleFill size={30} /></button>
+          </div>
         </div>
       </div>
     </header>
