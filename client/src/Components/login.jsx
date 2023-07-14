@@ -38,14 +38,18 @@ const CompShowLogin = () => { // Se define el componente.
           localStorage.setItem('id', response.data.id)
           localStorage.setItem('username', response.data.username)
           // Puedes realizar acciones adicionales después de enviar los datos
+
           if (response.data.validation){
             if (response.data.rol === 'user'){
               navigate('/');
+              window.location.reload();
             } else if (response.data.rol === 'admin'){
-              navigate('/admin')
+              //navigate('/admin')
+              window.location.reload();
             }
           }else{
             navigate('/login')
+            window.location.reload();
           }
         
         })
