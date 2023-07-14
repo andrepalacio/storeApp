@@ -81,11 +81,10 @@ function ProductView(props) {
         setSelectedImage(event.target.value);
       };
 
-    
+      const [quantity, setQuantity] = useState(0);
 
     return( 
-        <>
-        <Header/>
+        <>   
        
         <div className='mainContainer'>
             <form>
