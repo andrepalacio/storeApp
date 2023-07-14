@@ -90,7 +90,21 @@ input {
     border: none;
     width: 150px; /* Define el ancho del botón */
     height: 40px; /* Define la altura del botón */
-    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
+    padding: 5px 20px; /* Ajusta el espaciado interno del botón */
+}
+
+.btn-volver{
+    background-color: #fe8123;
+    color: #fff;
+    border-radius: 2%;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 5px 20px; /* Ajusta el espaciado interno del botón */
 }
 
 .btn-volver{
