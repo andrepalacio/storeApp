@@ -12,7 +12,7 @@ function ProductView(props) {
     const idProduct = useParams();
     console.log(idProduct);
 
-    const [data,setData] = useState(Data);
+    const [data] = useState(Data);
     const [quantity, setQuantity] = useState(1);
 
     const [image1, setImage1] = useState(null);
@@ -99,6 +99,8 @@ function ProductView(props) {
       };
 
     return(
+        <>
+        <Header />
         <div className='mainContainer'>
             <form>
                 <input type='radio' id='Image1' name='image' defaultChecked value={image1} onChange={handleImageChange} />
@@ -152,10 +154,8 @@ function ProductView(props) {
 
                 </div>
             </div>
-
-           
-
         </div>
+        </>
     );
     
 
