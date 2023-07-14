@@ -3,7 +3,7 @@ import '../Styles/productView.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
-import Header from './header';
+// import Header from './header';
 
 
 function ProductView(props) {
@@ -100,7 +100,7 @@ function ProductView(props) {
 
     return(
         <>
-        <Header />
+        {/* <Header /> */}
         <div className='mainContainer'>
             <form>
                 <input type='radio' id='Image1' name='image' defaultChecked value={image1} onChange={handleImageChange} />
