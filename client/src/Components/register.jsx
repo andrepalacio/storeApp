@@ -100,7 +100,12 @@ const Register = () => {
 
         </div>
         <div className="boton">
-        <button className="btm-submit" type="submit">Crear cuenta</button>
+          <button className="btm-submit" type="submit">Crear cuenta</button>
+        </div>
+        <div className="register-link">
+          <Link to="/login" className='register'>
+            <button className='btn-volver'>Volver</button>
+          </Link>
         </div>
       </form>
     </div>
