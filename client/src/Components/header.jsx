@@ -1,7 +1,7 @@
-import React from 'react';
+import {React, useState} from 'react';
 import '../Styles/header.css';
 import { BsPerson, BsBag, BsFillArrowLeftCircleFill } from 'react-icons/bs';
-import { Link, useNavigate, } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 
 const Header = (props) => {
