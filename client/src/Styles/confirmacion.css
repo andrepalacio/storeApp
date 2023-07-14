@@ -10,8 +10,8 @@
 }
 
 .Confirmed {
-  max-width: 400px;
-  width: 90%;
+  height: 580px;
+  width: 380px;
   margin: auto;
   background-color: #ffffff;
   display: flex;
