@@ -129,7 +129,7 @@ function ProductView(props) {
                     <div className='productButton'>
                         <div></div>
                 
-                        <Link to={`/cart`} className='hola'>
+                        <Link to={`/cart`} className='hola'> 
                             <button className='btn-submit'>Agregar al Carrito</button>
                         </Link>
                     </div>
