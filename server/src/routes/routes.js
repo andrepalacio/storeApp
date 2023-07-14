@@ -29,7 +29,7 @@ router.get('/administrator', administrator);
 
 router.put('/administrator', update);
 
-router.post(' ', createSession)
+router.post('/checkout', createSession)
 
 router.get('/productsList', getProducts)
 
