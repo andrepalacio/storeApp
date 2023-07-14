@@ -1,0 +1,69 @@
+body{
+    background-color: #f1f6f8;
+  }
+  
+.adminData{
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-inp label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.93rem;;
+}
+  
+label {
+    display: block;
+}
+  
+input {
+    border-radius: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+form input {
+    height: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: left;
+    color: #9b9a9a;
+}
+
+
+
+
+  
+::placeholder{
+    color: #919090;
+    text-align: left;
+}
+  
+.btn-submit {
+    background-color: #fe8123;
+    color: #fff;
+    border-radius: 2%;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 0px 10px; /* Ajusta el espaciado interno del botón */
+}
+  
+.btn-submit:hover {
+    background-color: #e6721a;
+    border: none;
+}
+  

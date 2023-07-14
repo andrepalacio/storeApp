@@ -59,7 +59,6 @@ const Register = () => {
           <h1 className='textHeader'>Crear cuenta</h1>
         </div> */}
 
-
       <div className="container-inp">
           <div>
             <label htmlFor="name">Nombre:</label>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../Styles/productView.css';
 import { Link, useParams } from 'react-router-dom';
 import Data from '../data.json';
-import Header from './header';
 
 function ProductView(props) {
   const idProduct = useParams();
