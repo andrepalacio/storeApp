@@ -15,8 +15,6 @@ const db = mysql.createConnection({
   port: "20379"
 });
 
-
-
 export const createSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [
