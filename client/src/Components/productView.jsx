@@ -147,14 +147,9 @@ function ProductView(props) {
                             <button onClick={handleIncrease}>+</button>
                     </div>
                     <div className='productButton'>
-                        <div className="productQuantity">
-                            <button onClick={handleDecrease}>-</button>
-                            <span>{quantity}</span>
-                            <button onClick={handleIncrease}>+</button>
-                        </div>
-                        <Link to={`/cart`} className='ProductLink'>
-                            <button>Agregar al Carrito</button>
-                        </Link>
+                        <div></div>
+                        <input type='number'/>
+                        <button onClick={handleClick}>Agregar al carrito</button>
                     </div>
 
                 </div>
