@@ -20,7 +20,7 @@
     flex-direction: column;
     margin-top: 60px;
     box-shadow: 5px 5px 20px #d6d6d6;
-    
+    text-align: center;
 }
 
 .logo-login {
