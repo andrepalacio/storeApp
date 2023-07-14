@@ -5,8 +5,7 @@ import '../Styles/cart.css';
 import productImg from '../Images/productsImages/product1/1.jpg';
 import Header from './header';
 
-function CartItem() {
-  //axios.get('http://localhost:9000/purchase');
+function CartItem() { 
   return (
     <>
       <div className='itemImage'>
