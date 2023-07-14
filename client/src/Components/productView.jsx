@@ -12,7 +12,7 @@ function ProductView(props) {
     const idProduct = useParams();
     console.log(idProduct);
 
-    const [data,setData] = useState(Data);
+    const [data] = useState(Data);
     const [quantity, setQuantity] = useState(1);
 
     const [image1, setImage1] = useState(null);
@@ -26,8 +26,7 @@ function ProductView(props) {
 
       setSelectedImage(module1.default);
       setImage1(module1.default);
-      setImage2(module2.default);
-      
+      setImage2(module2.default);     
       setImage3(module3.default);
     };
     
@@ -100,6 +99,8 @@ function ProductView(props) {
       };
 
     return(
+        <>
+        <Header />
         <div className='mainContainer'>
             <form>
                 <input type='radio' id='Image1' name='image' defaultChecked value={image1} onChange={handleImageChange} />
@@ -132,8 +133,8 @@ function ProductView(props) {
                         <h2>{product.name}</h2>
                     </div>
                     <div className='productDescription'>
-                    <p>{product.description}</p>
-                 </div>
+                        <p>{product.description}</p>
+                    </div>
                     <div className='productPrice'>
                         <h2>${product.price}</h2>
                     </div>
@@ -153,10 +154,8 @@ function ProductView(props) {
 
                 </div>
             </div>
-
-           
-
         </div>
+        </>
     );
     
 

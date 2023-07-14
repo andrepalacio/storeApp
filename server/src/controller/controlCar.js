@@ -19,9 +19,10 @@ const db = mysql.createConnection({
 
 
 export const addCar = async (req, res) => {
-  const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+  // const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
   const requestData = req.body;
+  const userId = body.userId;
 	const querySelect           = 'SELECT * FROM products WHERE name = ?';
 	const queryReserve          = 'UPDATE products SET amount = ? WHERE id = ?';
   const queryVerifyCar        = 'SELECT * FROM userCar WHERE userId = ?';
@@ -81,8 +82,10 @@ export const addCar = async (req, res) => {
 
 
 export const removeCar = (req, res) => {
-	const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+	// const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
+  const requestData = req.body;
+  const userId = requestData.userId;
 	const querySelect           = 'SELECT * FROM products WHERE name = ?';
 	const queryReserve          = 'UPDATE products SET amount = ? WHERE id = ?';
   const queryVerifyCar        = 'SELECT * FROM userCar WHERE userId = ?';
@@ -133,8 +136,9 @@ const checkInventory = (productId) => {
 
 export const calculatePrice = (req, res) => {
   let prices = 0;
-  const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+  // const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
+
   const queryCount      = 'SELECT * FROM purchaseList WHERE carId = ?';
   // const queryPrice      = 'SELECT price FROM products WHERE id = ?';
   const queryVerifyCar  = 'SELECT * FROM userCar WHERE userId = ?';
@@ -201,8 +205,9 @@ export const createSession = async (req, res) => {
 }
 
 export const cancelPurchaseList = (req, res) => {
-  const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+  // const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
+  const userId  = req.body.userId;
   const queryVerifyCar      = 'SELECT * FROM userCar WHERE userId = ?';
   const querySelectProducts = 'SELECT * FROM purchaseList WHERE carId = ?';
   const queryTruncate       = 'DELETE FROM purchaseList WHERE carId = ?';

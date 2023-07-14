@@ -30,7 +30,13 @@ router.put('/administrator', update);
 
 router.post('/checkout', createSession)
 
+router.get('/cart/calculate', calculatePrice)
+
 router.post('/cart/add', addCar)
+
+router.post('/cart/remove', removeCar)
+
+router.post('/cart/cancel', cancelPurchaseList)
 
 // router.post('/logout', logout)
 
