@@ -3,8 +3,7 @@ import '../Styles/productView.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
-import Header from './header'; 
-
+import Header from './header';
 
 
 function ProductView(props) {
@@ -15,6 +14,8 @@ function ProductView(props) {
     console.log(idProduct);
 
     const [data,setData] = useState(Data);
+
+    const [quantity, setQuantity] = useState(1);
 
     // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
     // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
@@ -67,13 +68,31 @@ function ProductView(props) {
             console.log(product);
         }
     });
+
+    const handleDecrease = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+        }
+      };
+    
+      const handleIncrease = () => {
+        if (quantity < product.amount) {
+          setQuantity(quantity + 1);
+        }
+      };
+    
     const [selectedImage, setSelectedImage] = useState(image1);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
       };
 
-    return(
+    
+
+    return( 
+        <>
+        <Header/>
+       
         <div className='mainContainer'>
             <form>
                 <input type='radio' id='Image1' name='image' defaultChecked value={image1} onChange={handleImageChange} />
@@ -102,15 +121,22 @@ function ProductView(props) {
                 </div>
 
                 <div className='productInfo'>
-                    
                     <div className='productName'>
-                        <h1>{product.name}</h1>
+                        <h2>{product.name}</h2>
                     </div>
+                    <div className='productDescription'>
+                    <p>{product.description}</p>
+                 </div>
                     <div className='productPrice'>
                         <h2>${product.price}</h2>
                     </div>
                     <div className='productAmount'>
                         <h3>Disponibles: {product.amount}</h3>
+                    </div>
+                    <div className="productQuantity">
+                            <button onClick={handleDecrease}>-</button>
+                            <span>{quantity}</span>
+                            <button onClick={handleIncrease}>+</button>
                     </div>
                     <div className='productButton'>
                         <div></div>
@@ -122,11 +148,10 @@ function ProductView(props) {
                 </div>
             </div>
 
-            <div className='productDescription'>
-                    <p>{product.description}</p>
-            </div>
+           
 
         </div>
+        </>
     );
     
 
