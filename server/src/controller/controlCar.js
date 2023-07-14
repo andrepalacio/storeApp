@@ -19,8 +19,11 @@ const db = mysql.createConnection({
 
 
 export const addCar = async (req, res) => {
-  // const token   = localStorage.getItem('accessToken');
-  // const userId  = token.id;
+  const token   = localStorage.getItem('accessToken');
+  const userId  = token.id;
+  // const token = req.headers.authorization;
+  // const decodedToken = jwt.verify(token, 'secretKey');
+    // const userId = decodedToken.userId;
   const requestData = req.body;
   const userId = body.userId;
 	const querySelect           = 'SELECT * FROM products WHERE name = ?';
@@ -100,13 +103,13 @@ export const removeCar = (req, res) => {
       db.query(queryReserve, [productSelected[0].amount + 1, productSelected[0].id])
       .then(console.log("Reserva anulada"))
       .catch(console.error("Error al acceder a la reserva"))
-      db.query(queryVerifyProduct, [carAssigned.insertId, productSelected[0].id])
+      db.query(queryVerifyProduct, [carAssigned[0].id, productSelected[0].id])
       .then(listResult => {
         if (listResult[0].amount > 1){
-          db.query(queryDecreaseProduct, [listResult[0].amount + 1, carAssigned.insertId, productSelected[0].id])
+          db.query(queryDecreaseProduct, [listResult[0].amount + 1, carAssigned[0].id, productSelected[0].id])
           .catch(console.error("Error al modificar el carrito de compras"))
         }else{
-          db.query(queryRemoveCar, [carAssigned.insertId, productSelected[0].id])
+          db.query(queryRemoveCar, [carAssigned[0].id, productSelected[0].id])
         }
       })
       .catch(console.error("Error al acceder a la lista de productos"))
