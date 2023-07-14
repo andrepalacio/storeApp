@@ -19,9 +19,10 @@ const db = mysql.createConnection({
 
 
 export const addCar = async (req, res) => {
-  const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+  // const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
   const requestData = req.body;
+  const userId = body.userId;
 	const querySelect           = 'SELECT * FROM products WHERE name = ?';
 	const queryReserve          = 'UPDATE products SET amount = ? WHERE id = ?';
   const queryVerifyCar        = 'SELECT * FROM userCar WHERE userId = ?';
@@ -81,8 +82,10 @@ export const addCar = async (req, res) => {
 
 
 export const removeCar = (req, res) => {
-	const token   = localStorage.getItem('accessToken');
-  const userId  = token.id;
+	// const token   = localStorage.getItem('accessToken');
+  // const userId  = token.id;
+  const requestData = req.body;
+  const userId = requestData.userId;
 	const querySelect           = 'SELECT * FROM products WHERE name = ?';
 	const queryReserve          = 'UPDATE products SET amount = ? WHERE id = ?';
   const queryVerifyCar        = 'SELECT * FROM userCar WHERE userId = ?';

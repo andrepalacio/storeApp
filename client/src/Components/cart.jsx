@@ -1,12 +1,43 @@
-import React from 'react';
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+// import {Link, useNavigate} from 'react-router-dom';
 import '../Styles/cart.css';
 import productImg from '../Images/productsImages/product1/1.jpg';
 import Header from './header';
 
-function CartItem() {
-  axios.get('localhost:9000/purchase');
+function CartItem(cart) {
+  // axios.get('http://localhost:9000/purchase');
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  //cambiar por la cantidad de productos en stock
+  const handleIncrease = () => {
+    if (quantity < 15) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleRemove = (id) => {
+    //eliminar producto del carrito
+    fetch('http://localhost:9000/cart/remove', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: cart,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <>
       <div className='itemImage'>
@@ -18,18 +49,35 @@ function CartItem() {
       </div>
 
       <div className="cantidad">
-        <button className="flecha" id="disminuir">&#8722;</button>
-        <input className='cantidad' type="number" value="1" />
-        <button className="flecha" id="aumentar">&#43;</button>
+        <button className="flecha" id="disminuir" onClick={handleDecrease}>&#8722;</button>
+        <input className='cantidad' type="number" value={quantity} />
+        <button className="flecha" id="aumentar" onClick={handleIncrease}>&#43;</button>
       </div>
 
-        <button className='itemRemove'>Quitar</button>
+        <button className='itemRemove' onClick={handleRemove}>Quitar</button>
 
     </>
   )
 }
 
 function Cart() {
+  const [cart, setCart] = useState([]);
+
+  const getCart = () => {
+    fetch('http://localhost:9000/cart')
+      .then((res) => res.json())
+      .then((data) => {
+        setCart(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
   const handleButtonPress = async () => {
     const formData = {
       line_items: [
@@ -63,6 +111,7 @@ function Cart() {
   //   .then(res => {
   //     console.log(res.result)
   //   })
+
   return (
     <>
       <Header 
@@ -76,7 +125,7 @@ function Cart() {
       <div className='parentContainer'>
         <div className='cart'>
           <div className='cartItems'>
-            <CartItem />
+            <CartItem cart={cart}/>
             {/* <CartItem /> */}
           </div>
           <div className='cartTotal'>

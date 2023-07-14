@@ -36,6 +36,8 @@ router.get('/cancel')
 
 router.post('/cart/add', addCar)
 
+router.post('/cart/remove', removeCar)
+
 // router.post('/logout', logout)
 
 export default router
