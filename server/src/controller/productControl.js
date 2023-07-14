@@ -8,20 +8,34 @@ const db = mysql.createConnection({
   port: "20379"
 });
 
-export const getProducts = () => {
-    // const query = `SELECT * FROM products`;
-    // return new Promise((resolve, reject) => {
-    //   db.query(query, (error, stockInfo) => {
-    //     error ? reject(error) : resolve(stockInfo);
-    //   });
-    // });
+// export const getProducts = () => {
+//     // const query = `SELECT * FROM products`;
+//     // return new Promise((resolve, reject) => {
+//     //   db.query(query, (error, stockInfo) => {
+//     //     error ? reject(error) : resolve(stockInfo);
+//     //   });
+//     // });
 
+//     const query = `SELECT * FROM products`;
+//     db.query(query, (error, stockInfo) => {
+//         error ? console.log(error) : console.log(stockInfo);
+//         })
+// };
+
+
+export const getProducts = (req, res) => {
     const query = `SELECT * FROM products`;
     db.query(query, (error, stockInfo) => {
-        error ? console.log(error) : console.log(stockInfo);
+        error ? console.log(error) : res.json(stockInfo);
         })
-};
+}
 
 
+export const getProductsById = (req, res) => {
+    const query = `SELECT * FROM products WHERE id = ${req.params.id}`;
+    db.query(query, (error, stockInfo) => {
+        error ? console.log(error) : res.json(stockInfo);
+        })
+}
 
 
