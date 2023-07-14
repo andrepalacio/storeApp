@@ -3,10 +3,6 @@ import { alertMail } from "./mails.js"
 import Stripe from 'stripe'
 import jwt from 'jsonwebtoken';
 
-const purchaseList = new Array;
-const stripeSecret = "sk_test_51NS4P4KVzQlPajzBoWrdb25nCwhexkdZe8E1qvNIDGOaEEEvqxzzomsGg8pcGwkazZRrMyhcvWLbhiMpPl5pgHhd00S8mgl93p"
-
-const stripe = new Stripe(stripeSecret)
 
 const secretWord = "mami"
 
@@ -20,26 +16,6 @@ const db = mysql.createConnection({
 });
 
 
-export const createSession = async (req, res) => {
-  const data = req.body;
-  // console.log(data);
-  const line_items = data.line_items;
-  // console.log(items);
-  // const prueba = {
-  //   items,
-  //   mode: 'payment',
-  //   success_url: 'http://localhost:9000/success',
-  //   cancel_url: 'http://localhost:9000/cancel',
-  // }
-  // console.log(prueba);
-  const session = await stripe.checkout.sessions.create({
-    line_items,
-    mode: 'payment',
-    success_url: 'http://localhost:3000/success',
-    cancel_url: 'http://localhost:3000/cancel',
-  })
-  res.json({result:session})
-}
 
 // export const createSession = async (req, res) => {
 //   const session = await stripe.checkout.sessions.create({
@@ -80,7 +56,7 @@ export const login = (req, res) => {
       res.status(500).json({ error: 'Error al verificar las credenciales' });
     } else {
       if (results.length > 0) {
-        const user = { id: results[0].id, username: requestData.name }
+        const user = { username: requestData.name }
 
         const accesToken = generateAccessToken(user);
 
@@ -133,71 +109,26 @@ export const sigin = (req, res) => {
   });
 }
 
-export const addCar = (nameProduct, req, res) => {
-  const query = 'SELECT * FROM products WHERE name = ?';
-  const queryReserve = 'UPDATE products SET minStock = ? WHERE id = ?';
-  let productObj = {};
 
-  db.query(query, nameProduct)
-  .then(result => {
-    if (result.length > 0){
-        productObj = {
-          id      : result[0].id,
-          name    : result[0].name,
-          amount  : result[0].amount,
-          price   : result[0].price,
-          minStock: result[0].minStock - 1
-        }
-        db.query(queryReserve, [productObj.minStock, productObj.id])
-        .then(() => {console.log('Producto reservado')})
-        .catch(() => {console.error('Error en la reserva del producto, problemas de acceso')})
-      }
-      purchaseList.push(productObj);
-  }).catch( error => {
-    throw error;
-  }
-  )
-}
+export const update = (req, res, ) => {
+  const id = req.params.id;
+  const requestData = req.body;
 
-export const checkInventory = (stock, req, res) => {
-  const minStock = 5, maxStock = 30;
-  // const stock = product.minStock;
-  if (stock >= maxStock || stock <= minStock){
-    alertMail();
-  }
-  
-}
+  const query = 'UPDATE products SET name = ?, description = ?, amount = ?, price = ?, minStock = ? WHERE id = ?';
+  const values = [requestData.name, requestData.description, requestData.amount, requestData.price, requestData.minStock, id]
 
-export const calculatePrice = (req, res) => {
-  let prices = 0;
-  
-  for(let countPos = 0; countPos < purchaseList.length; countPos++){
-    prices += purchaseList[countPos].price;
-    checkInventory(purchaseList[countPos].minStock);
-  }
-  return prices;
+  db.query(query, values, (err, result) => {
+    if (err) {
+      console.error('Error al actualizar el registo', err);
+      res.status(500).json({ error: 'Error al actualizar el registro' });
+    } else {
+      res.json({ message: 'Registro actualizado exitosamente' })
+    }
+  })
 }
 
 
-export const cancelPurchaseList = (req, res) => {
-  let countPos = 0;
-  const query = 'UPDATE products SET minStock = ? WHERE id = ?';
-  while(countPos < purchaseList.length){
-    db.query(query, [purchaseList[countPos].minStock + 1, purchaseList[countPos].id])
-    .then(console.log('Reserva anulada correctamente'))
-    .catch(console.error('Error al acceder a la reserva'))
-    purchaseList.pop();
-    countPos++;
-  }
-}
 
-export const cleanPurchaseList = (req, res) => {
-  let countPos = 0;
-  while(countPos < purchaseList.length){
-    purchaseList.pop();
-    countPos++;
-  }
-}
 
 export const deletee = (req, res) => {
   const id = req.params.id;

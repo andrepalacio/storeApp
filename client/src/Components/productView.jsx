@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Styles/productView.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
 import Header from './header'; 
@@ -8,6 +8,8 @@ import Header from './header';
 
 
 function ProductView(props) {
+
+    const navigate = useNavigate();
 
     const idProduct = useParams();
     console.log(idProduct);
@@ -55,16 +57,11 @@ function ProductView(props) {
             console.log(product);
         }
     });
-
     const [selectedImage, setSelectedImage] = useState(image1);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
       };
-
-
-
-
 
     return(
         <div className='mainContainer'>
@@ -108,9 +105,8 @@ function ProductView(props) {
                     <div className='productButton'>
                         <div></div>
                         <input type='number'/>
-                        <Link to={`/cart`} className='ProductLink'>
-                            <button>Agregar al Carrito</button>
-                        </Link>
+                        
+                            <button onClick={handleClick}>Agregar al Carrito</button>
                     </div>
 
                 </div>
