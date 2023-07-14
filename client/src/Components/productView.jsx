@@ -19,16 +19,28 @@ function ProductView(props) {
     const [image3, setImage3] = useState(null);
 
     const handleImportImages = async () => {
-        const module1 = await import(`../Images/productsImages/product${idProduct.id}/1.jpg`);
-        const module2 = await import(`../Images/productsImages/product${idProduct.id}/2.jpg`);
-        const module3 = await import(`../Images/productsImages/product${idProduct.id}/3.jpg`);
-  
-        setSelectedImage(module1.default);
-        setImage1(module1.default);
-        setImage2(module2.default);
-        setImage3(module3.default);
-  
+      const module1 = await import(`../Images/productsImages/product${idProduct.id}/1.jpg`);
+      const module2 = await import(`../Images/productsImages/product${idProduct.id}/2.jpg`);
+      const module3 = await import(`../Images/productsImages/product${idProduct.id}/3.jpg`);
+
+      setSelectedImage(module1.default);
+      setImage1(module1.default);
+      setImage2(module2.default);
+      
+      setImage3(module3.default);
+
+    
+
     };
+    
+    const handleClick = () => {
+        if (localStorage.getItem('accessToken')){
+            navigate('/cart')
+        }else{
+            navigate('/login')
+        }
+    }
+    
 
     let product = {};
     useEffect(() => {
