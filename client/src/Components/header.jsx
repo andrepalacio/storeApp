@@ -20,12 +20,18 @@ const Header = (props) => {
     navigate('/')
   };
 
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  // Función para cambiar el estado de isButtonDisabled
-  const toggleButton = () => {
-    setIsButtonDisabled(!isButtonDisabled);
+  const handleClickLogin = () => {
+    if (!accessToken){
+      navigate('/login')
+    }
   };
+
+  const handleClickCart = () => {
+    if (accessToken){
+      navigate('/cart')
+    }
+  }
 
   return (
     <header className="container-header">
@@ -47,12 +53,12 @@ const Header = (props) => {
           </div>
 
           <div className="link">
-            <button disabled={isButtonDisabled} onClick={toggleButton}>
+            <button onClick={handleClickLogin}>
               <BsPerson size={30} />
             </button>
           </div>
           <div className="link">
-            <button><BsBag size={24} />
+            <button onClick={handleClickCart}><BsBag size={24} />
               <span className='item_total'>0</span>
             </button>
           </div>
