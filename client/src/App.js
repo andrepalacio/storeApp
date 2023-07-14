@@ -11,7 +11,8 @@ import Login from './Components/login';
 import ProductView from './Components/productView';
 import Cart from './Components/cart';
 import Administrator from './Components/administrator';
-import Products2 from './Components/products2';
+import Rechazado from './Components/rechazado';
+import Confirmacion from './Components/confirmacion';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -19,6 +20,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   
   const [accessToken, setAccessToken] = useState('');
+
+  //const navigate = useNavigate()
 
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
@@ -39,29 +42,22 @@ function App() {
               <Products />
             </div>
           </> } />
-          <Route
-          path="/Home/:id"
-          element={
-            accessToken ? (
-              <>
-                <Header />
-                <div className="main-container">
-                  <Products2 />
-                  <h1>Ya estás registrado</h1>
-                </div>
-              </>
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+          
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/viewUser'/>
-        <Route path='/cart' element={<Cart />} />
+        <Route 
+          path='/cart' 
+          element={
+            accessToken ? 
+            <Cart />
+            : <Navigate to="/"/>
+            } />
         <Route path='/admin' element={<Administrator />} />
         <Route path='/viewProduct' element={<ProductView />} />
         <Route path='/product/:id' element={<ProductView />}/>
+        <Route path='/cancel' element={<Rechazado />} />
+        <Route path='/success' element={<Confirmacion />} />
       </Routes>
     </Router>
   );

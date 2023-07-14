@@ -3,20 +3,16 @@ import '../Styles/productView.css';
 import { Link, useParams } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
-import Header from './header'; 
+// import Header from './header'; 
 
 
 
-function ProductView(props) {
+function ProductView() {
 
     const idProduct = useParams();
     console.log(idProduct);
 
-    const [data,setData] = useState(Data);
-
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
+    const [data] = useState(Data);
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
@@ -40,11 +36,10 @@ function ProductView(props) {
     useEffect(() => {
         handleImportImages();
     }, []);
-    // console.log(image1, image2, image3);
 
    
     data.products.map((current) => {
-        if (current.id == idProduct.id){
+        if (current.id === idProduct.id){
             product = {
                 "id": current.id,
                 "name": current.name,

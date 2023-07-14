@@ -3,21 +3,29 @@ import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
 import '../Styles/cart.css';
 import productImg from '../Images/productsImages/product1/1.jpg';
+import Header from './header';
 
 function CartItem() {
   axios.get('localhost:9000/purchase');
   return (
-    <div className='item'>
+    <>
       <div className='itemImage'>
         <img src={productImg} alt='product' />
       </div>
       <div className='itemInfo'>
         <h2>Product</h2>
-        <p className='itemQty'>Qty: 1</p>
-        <p className='itemPrice'>9.99</p>
-        <button className='itemRemove'>Quitar</button>
+        <p className='itemPrice'>$50.000</p>
       </div>
-    </div>
+
+      <div className="cantidad">
+        <button className="flecha" id="disminuir">&#8722;</button>
+        <input className='cantidad' type="number" value="1" />
+        <button className="flecha" id="aumentar">&#43;</button>
+      </div>
+
+        <button className='itemRemove'>Quitar</button>
+
+    </>
   )
 }
 
@@ -57,16 +65,25 @@ function Cart() {
   //   })
   return (
     <>
-      <h1 className='cartTitle'>Shopping Cart</h1>
-      <div className='cart'>
-        <div className='cartItems'>
-          <CartItem />
-          {/* <CartItem /> */}
-        </div>
-        <div className='cartTotal'>
-          <p className='cartTotalTitle'>Total:</p>
-          <p className='cartTotalPrice'>$9.99</p>
-          <button onClick={handleButtonPress}>Pagar</button>
+      <Header 
+        idUser="1"
+      />
+
+      <div className='headerCard'>
+        <h1 className='cartTitle'>Tu Carrito</h1>
+      </div>
+
+      <div className='parentContainer'>
+        <div className='cart'>
+          <div className='cartItems'>
+            <CartItem />
+            {/* <CartItem /> */}
+          </div>
+          <div className='cartTotal'>
+            <span className='subTotal'>Subtotal</span>
+            <span className='cartTotalPrice'>$50.000</span>
+          </div>
+          <button className="buttonCard" onClick={handleButtonPress}>Proceder a pagar</button>
         </div>
       </div>
     </>
