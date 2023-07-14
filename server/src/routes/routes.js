@@ -34,6 +34,8 @@ router.get('/success')
 
 router.get('/cancel')
 
+router.get('/cart/calculate', calculatePrice)
+
 router.post('/cart/add', addCar)
 
 router.post('/cart/remove', removeCar)
