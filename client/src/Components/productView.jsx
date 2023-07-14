@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import '../Styles/productView.css';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Data from '../data.json';
 import Header from './header';
 
 function ProductView(props) {
+  const navigate = useNavigate();
+
   const idProduct = useParams();
-  const [data, setData] = useState(Data);
+  const [data] = useState(Data);
   const [quantity, setQuantity] = useState(1);
 
   let product = {};
@@ -34,6 +36,14 @@ function ProductView(props) {
       setQuantity(quantity - 1);
     }
   };
+
+  const handleClick = () => {
+    if (localStorage.getItem('accessToken')){
+        navigate('/cart')
+    }else{
+        navigate('/login')
+    }
+}
 
   return (
     <div className="mainContainer">
@@ -65,10 +75,7 @@ function ProductView(props) {
             </button>
           </div>
           <div className="productButton">
-            <div></div>
-            <Link to={`/cart`} className="ProductLink">
-              <button>Agregar al Carrito</button>
-            </Link>
+            <button onClick={handleClick}>Agregar al Carrito</button>
           </div>
         </div>
       </div>
