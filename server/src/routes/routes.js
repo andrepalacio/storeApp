@@ -41,6 +41,8 @@ router.post('/cart/remove', removeCar)
 
 router.post('/cart/cancel', cancelPurchaseList)
 
+router.post('/cart/success', cleanPurchaseList)
+
 // router.post('/logout', logout)
 
 router.get('/productsList', getProducts)

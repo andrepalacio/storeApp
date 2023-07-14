@@ -62,13 +62,13 @@ export const addCar = async (req, res) => {
           db.query(queryReserve, [productSelected[0].id, productSelected[0].amount - 1])
           .then(console.log("Producto reservado"))
           .catch(console.error("Error al realizar la reserva"))
-          db.query(queryVerifyProduct, [carAssigned.insertId, productSelected[0].id])
+          db.query(queryVerifyProduct, [carAssigned[0].id, productSelected[0].id])
           .then((listResult) => {
             if(listResult.result == 0){
-              db.query(queryAddProduct, [carAssigned.insertId, productSelected[0].id, 1])
+              db.query(queryAddProduct, [carAssigned[0].id, productSelected[0].id, 1])
               .catch(console.error("Error al modificar la lista de compra"))
             }else{
-              db.query(queryIncreaseProduct, [listResult[0].amount + 1, carAssigned.insertId, productSelected[0].id])
+              db.query(queryIncreaseProduct, [listResult[0].amount + 1, carAssigned[0].id, productSelected[0].id])
             }
           })
           .catch(console.error("Error al buscar el producto en el carrito de compras"))
