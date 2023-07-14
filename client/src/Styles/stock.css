@@ -4,44 +4,107 @@ table {
     margin: 40px auto 50px auto;
     color: #000000;
     font-family: monospace;
-    font-size: 15px;
+    font-size: 1rem;
     text-align: center;
+}
+
+td{
+    margin: 0;
+    padding: 0;
 }
 
 th {
     background-color: #FFD500;
     color: #000000;
+    border-color: none;
     padding: 10px;
     text-transform: uppercase;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2
+    background-color: #f2f2f2;
 }
 
 input {
     width: auto;
     height: 100%;
-    padding: 10px;
     border: none;
     background-color: transparent;
     text-align: center;
 }
 
-input:active {
-    border: 0.2px solid #000;
-}
 
-button {
-    width: auto;
-    height: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: transparent;
-    text-align: center;
+.btnEditar {
+    background-color: #006CB6;
+    color: #fff;
+    border-radius: 2%;
+    margin-bottom: 20px;
+    font-size: 14px;
     cursor: pointer;
+    border: none;
+    width: 100px;
+    height: 50px; /* Define la altura del botón */
+    text-align: center;
 }
 
-button:hover {
-    border: 0.2px solid #000;
+.btnEditar:hover {
+    background-color: #0465a7;
+    border: none;
 }
+
+
+
+@media (max-width: 600px) {
+    table {
+      font-size: 14px;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+        padding-top: 10px;
+      margin-bottom: 10px;
+      display: block;
+      border: 1px solid #ddd;
+      width: 220px;
+
+    }
+
+    td {
+      display: flex;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: none;
+      justify-content: center;
+    }
+
+    td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    
+    .btnEditar {
+        background-color: #006CB6;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        border-radius: 2%;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        width: 100px;
+        height: 50px; /* Define la altura del botón */
+        justify-content: center;
+
+    }
+    }

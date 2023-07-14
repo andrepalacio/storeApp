@@ -28,7 +28,7 @@ const getProducts = () => {
 
 export const administrator = async (req, res) => {
   try {
-    const [admin, products] = await Promise.all([getAdmin(), getProducts()]);
+    const [admin, products] = await Promise.all([getAdmin(req.params.id), getProducts()]);
     res.json({ admin: admin, products: products });
   } catch (err) {
     console.log(err);
