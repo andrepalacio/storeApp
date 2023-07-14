@@ -29,7 +29,6 @@
   .productContainer {
     align-items: center;
     margin-bottom: 10px;
-    background-color: #dfdfdf;
   }
   
   .productInfo {
@@ -38,7 +37,6 @@
     align-items: center;
     justify-content: center;
     margin: 20px;
-    text-align: center;
   }
   
   .extraImages {
