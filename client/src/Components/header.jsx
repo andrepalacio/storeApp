@@ -40,6 +40,7 @@ const Header = (props) => {
             <img src={theLegoGarage} alt="Logo de la tienda" /> {/* Utiliza la imagen */}
           </div>
         </a>
+        </div>
 
       <div className="actions">
         <div className='nameMessage'>
