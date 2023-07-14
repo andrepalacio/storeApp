@@ -28,9 +28,18 @@ function ProductView(props) {
       setImage2(module2.default);
       setImage3(module3.default);
 
-      
-    };
+    
 
+    };
+    
+    const handleClick = () => {
+        if (localStorage.getItem('accessToken')){
+            navigate('/cart')
+        }else{
+            navigate('/login')
+        }
+    }
+    
 
     let product = {};
     useEffect(() => {
@@ -50,16 +59,11 @@ function ProductView(props) {
             console.log(product);
         }
     });
-
     const [selectedImage, setSelectedImage] = useState(image1);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
       };
-
-
-
-
 
     return(
         <div className='mainContainer'>
