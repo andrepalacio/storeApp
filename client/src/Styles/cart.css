@@ -1,0 +1,284 @@
+/* Style cart */
+
+
+
+.headerCard{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+
+.cartTitle {
+    font-size: 2rem;
+    flex: 1;
+    text-align: center;
+    color: white;
+    color: black;
+    margin-left: -32px;
+    padding: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.parentContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around ;
+}
+
+.cart {
+    display: flexbox;
+    box-sizing: inherit;
+    position: sticky;
+}
+
+.cartItems {
+    padding: 0Px 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around ;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 10px #dfdfdf;
+    position: relative;
+    top: 0px;
+
+
+}
+
+.subTotal {
+    font-size: 1.5rem;
+    display: table-cell;
+}
+
+.cartTotalPrice{
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: table-cell;
+ 
+
+}
+
+.itemPrice{
+    text-align: left;
+
+}
+
+
+/* Style cart item */
+
+
+.itemImage img{
+    width: 250px;
+    height: 200px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+}
+
+.itemInfo > p {
+    margin: 5px 5px;
+    font-size: 1rem;
+}
+
+.itemRemove {
+    height: 40px;
+    margin-left: 16px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #006CB6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.itemRemove:hover {
+    background-color: #025d99;
+    border: none;
+}
+
+
+
+
+.cartTotal {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    color: black;
+    padding: 20Px 70px;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 10px #dfdfdf;
+    position: relative;
+    top: 0px;
+}
+
+
+
+
+.cantidad {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    margin: 20px;
+    padding: 0px 50px;
+}
+  
+
+
+.carrito .cantidad .flecha {
+    font-size: 50px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  input.cantidad {
+    width: 20px;
+    height: 30px;
+    text-align: center;
+  }
+
+  #aumentar{
+    padding: 7px;
+    margin: 0;
+  }
+
+  #disminuir{
+    padding: 7px;
+    margin: 0;
+  }
+
+  .buttonCard {
+        display: flex;
+        font-weight: 550;
+        align-items: center;
+        justify-content: center;
+        background-color: #fe8123;
+        color: #fff;
+        font-size: 1.4em;
+        cursor: pointer;
+        border: none;
+        width: 100%; /* Define el ancho del botón */
+        height: 50px; /* Define la altura del botón */
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      
+      
+      .buttonCard:hover {
+        background-color: #e6721a;
+        border: none;
+      }
+
+
+    @media only screen and (max-width: 600px) {
+
+                
+        .cart {
+            display: flexbox;
+            box-sizing: inherit;
+            position: sticky;
+        }
+
+        .cartItems {
+            padding: 0Px;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around ;
+            align-items: center;
+            background-color: #ffffff;
+            box-shadow: 0px 10px 10px #dfdfdf;
+            position: relative;
+            top: 0px;
+
+
+        }
+
+        .parentContainer{
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between ;
+        }
+
+        .buttonCard {
+            display: flex;
+            font-weight: 550;
+            align-items: center;
+            justify-content: center;
+            background-color: #fe8123;
+            color: #fff;
+            font-size: 1.4em;
+            cursor: pointer;
+            border: none;
+            width: 100%; /* Define el ancho del botón */
+            height: 50px; /* Define la altura del botón */
+            margin-top: 20px;
+            margin-bottom: 50px;
+
+          }
+          
+          
+          .buttonCard:hover {
+            background-color: #e6721a;
+            border: none;
+          }
+
+                
+        .cantidad {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            flex-direction: row;
+            margin: 20px;
+            padding: 0px 50px;
+        }
+        
+
+
+        .carrito .cantidad .flecha {
+            font-size: 50px;
+            border: none;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        p.itemPrice{
+            text-align: center;
+        }
+
+        .cartTotal{
+            padding-top: 50px;
+        }
+
+        input.cantidad {
+            width: 20px;
+            height: 30px;
+            text-align: center;
+        }
+
+        #aumentar{
+            padding: 7px;
+            margin: 0;
+
+        }
+
+        #disminuir{
+            padding: 7px;
+            margin: 0;
+        }
+            
+
+
+
+
+    }

@@ -1,0 +1,127 @@
+.container-login {
+    height: 580px;
+    width: 400px;
+    margin: auto;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 60px;
+    box-shadow: 5px 5px 20px #d6d6d6;
+}
+
+.container-logo-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-login{
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.logo-login {
+    height: 160px;
+    border-radius: 5px;
+}
+
+
+.container-input {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.93rem;;
+}
+
+.input-login {
+    height: 25px;
+    width: 90%;
+    border-radius: 15px;
+    padding: 4px 0px 4px 8px;
+    border: none;
+    background-color:#ffffff;
+}
+
+
+input {
+    padding: 8px;
+    border-radius: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+::placeholder{
+    color: #919090;
+    text-align: left;
+}
+
+.input-login {
+
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+
+}
+
+
+.container-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn-submit {
+    background-color: #fe8123;
+    color: #fff;
+    border-radius: 2%;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 10px 20px; /* Ajusta el espaciado interno del botón */
+}
+
+.btn-volver{
+    background-color: #fe8123;
+    color: #fff;
+    border-radius: 2%;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    width: 150px; /* Define el ancho del botón */
+    height: 40px; /* Define la altura del botón */
+    padding: 5px 20px; /* Ajusta el espaciado interno del botón */
+}
+
+.btn-submit:hover {
+    background-color: #e6721a;
+    border: none;
+
+}
+
+
+.register-link {
+    display: flex;
+    justify-content: center;
+}
+
+.register {
+    width: fit-content;  
+    text-align: center;
+    color: #006CB6;
+    cursor: pointer;
+    font-style: italic;
+}
