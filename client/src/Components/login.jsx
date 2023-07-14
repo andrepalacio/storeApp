@@ -93,7 +93,8 @@ const CompShowLogin = () => { // Se define el componente.
                     <button className='btn-volver'>Volver</button>
                   </Link>
                 </div>
-                <div className="register-link">
+                <br></br>
+                <div className="register-link"> 
                   <Link to="/register" className='register'>
                     Crear una cuenta
                   </Link>
