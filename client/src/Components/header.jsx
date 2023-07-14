@@ -12,6 +12,19 @@ const Header = (props) => {
   const navigate = useNavigate()
 
   const handleClickLogout = () => {
+    fetch('http://localhost:9000/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({id: userId})
+    })
+      .then((res) => {
+        console.log(res);
+      }).catch((error) => {
+        console.error(error);
+      });
     localStorage.removeItem('username')
     localStorage.removeItem('accessToken')
     localStorage.removeItem('id')

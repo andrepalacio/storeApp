@@ -64,7 +64,7 @@ function Cart() {
   const [cart, setCart] = useState([]);
 
   const getCart = () => {
-    fetch('http://localhost:9000/cart')
+    fetch(`http://localhost:9000/cart/calculate/${localStorage.getItem('id')}`)
       .then((res) => res.json())
       .then((data) => {
         setCart(data);
