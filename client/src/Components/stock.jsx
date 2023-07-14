@@ -90,7 +90,7 @@ function Stock(productsArray) {
               />
             </td>
             <td>
-              <button>Editar</button>
+              <button className='btnEditar'>Editar</button>
             </td>
           </tr>
         ))}

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Stock from './stock';
 import AdministratorForm from './administratorForm';
+import Header from './header';
 import '../Styles/administrator.css';
 
 function Administrator() {
@@ -9,7 +10,7 @@ function Administrator() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:9000/administrator');
+      const response = await fetch(`http://localhost:9000/administrator/${localStorage.getItem('id')}}`);
       const data = await response.json();
       setAdmin(data);
     } catch (error) {
@@ -34,13 +35,15 @@ function Administrator() {
 
   return (
     <>
+      <Header />
       {admin && (
         <div className='adminData'>
           <h2>Bienvenido {admin.admin[0].name}</h2>
-          <p>Desde aquí puedes editar tus datos y el stock de productos</p>
-          <button onClick={() => handleButtonClick('administratorForm')}>Editar Información Administrador</button>
-          <button onClick={() => handleButtonClick('stock')}>Editar Inventario</button>
+          <p className='parrContent'>Desde aquí puedes editar tus datos y el stock de productos</p>
+          <button className="btnForm" onClick={() => handleButtonClick('administratorForm')}>Editar Información Administrador</button>
+          <button className="btnInventario" onClick={() => handleButtonClick('stock')}>Editar Inventario</button>
           {displayComponent}
+
         </div>
       )}
     </>

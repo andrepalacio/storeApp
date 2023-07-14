@@ -5,28 +5,15 @@ import Stripe from 'stripe'
 // se agrega tabla de carrito y lista de productos
 // campos para carrito -> id del carrito, id del usuario FK, fecha de creacion
 // lista de productos -> id del proceso, id del carrito, id del producto, cantidad
-/*
-CREATE TABLE IF NOT EXISTS userCar(
-  id PK
-  userId FK
-  date
-);
-
-CREATE TABLE IF NOT EXISTS puchaseList(
-  id
-  carId
-  productId
-  amount
-);
-*/
 
 const stripeSecret = "sk_test_51NS4P4KVzQlPajzBoWrdb25nCwhexkdZe8E1qvNIDGOaEEEvqxzzomsGg8pcGwkazZRrMyhcvWLbhiMpPl5pgHhd00S8mgl93p"
 const stripe = new Stripe(stripeSecret)
 const db = mysql.createConnection({
-  host    : "localhost",
-  user    : "root",
-  password: "contraseña12345",
-  database: "theStore",
+  host: "berfinp9tsh1k6yqu993-mysql.services.clever-cloud.com",
+  user: "unspl4l656azvazq",
+  password: "xIAGTQgUi7ZLBygCXJh",
+  database: "berfinp9tsh1k6yqu993",
+  port: "20379"
 });
 
 

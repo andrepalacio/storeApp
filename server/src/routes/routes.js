@@ -2,15 +2,17 @@ import bodyParser from "body-parser"
 import { Router } from "express"
 import cors from 'cors'
 
-import {checkInventory, login, sigin, createSession} from "../controller/formControllers.js"
+import {login, sigin, createSession} from "../controller/formControllers.js"
 
 import {administrator, update} from "../controller/adminControl.js"
+
+import {addCar, removeCar, calculatePrice, cancelPurchaseList, cleanPurchaseList} from "../controller/controlCar.js"
 
 
 const router = Router()
 
 router.use(bodyParser.urlencoded({extended: false}))
-router.use(bodyParser.json())
+router.use(bodyParser.json()) 
 router.use(cors())
 
 router.get("/", (req, res) => {
@@ -27,5 +29,9 @@ router.get('/administrator', administrator);
 router.put('/administrator', update);
 
 router.post('/checkout', createSession)
+
+router.post('/cart/add', addCar)
+
+// router.post('/logout', logout)
 
 export default router
