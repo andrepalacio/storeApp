@@ -11,8 +11,9 @@ function ProductView(props) {
     const idProduct = useParams();
     console.log(idProduct);
 
-    const [data] = useState(Data);
+    // const [data] = useState(Data);
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
@@ -87,7 +88,7 @@ function ProductView(props) {
         }else{
             navigate('/login')
         }
-    });
+    };
 
     const [selectedImage, setSelectedImage] = useState(image1);
 
