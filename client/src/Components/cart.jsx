@@ -6,7 +6,7 @@ import productImg from '../Images/productsImages/product1/1.jpg';
 import Header from './header';
 
 function CartItem(cart) {
-  // axios.get('http://localhost:9000/purchase');
+  axios.get('http://localhost:9000/purchase');
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrease = () => {
