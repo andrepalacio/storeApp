@@ -26,6 +26,6 @@ router.get('/administrator', administrator);
 
 router.put('/administrator', update);
 
-router.get('/checkout', createSession)
+router.post('/checkout', createSession)
 
 export default router
