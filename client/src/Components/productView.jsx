@@ -14,10 +14,6 @@ function ProductView(props) {
 
     const [data,setData] = useState(Data);
 
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
-
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
     const [image3, setImage3] = useState(null);
@@ -63,6 +59,19 @@ function ProductView(props) {
       };
 
 
+      const handleDecrease = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+        }
+      };
+    
+      const handleIncrease = () => {
+        if (quantity < product.amount) {
+          setQuantity(quantity + 1);
+        }
+      };
+
+      const [quantity, setQuantity] = useState(0);
 
 
 
@@ -99,6 +108,9 @@ function ProductView(props) {
                     <div className='productName'>
                         <h1>{product.name}</h1>
                     </div>
+                    <div className='productDescription'>
+                        <p>{product.description}</p>
+                    </div>
                     <div className='productPrice'>
                         <h2>${product.price}</h2>
                     </div>
@@ -106,8 +118,11 @@ function ProductView(props) {
                         <h3>Disponibles: {product.amount}</h3>
                     </div>
                     <div className='productButton'>
-                        <div></div>
-                        <input type='number'/>
+                        <div className="productQuantity">
+                            <button onClick={handleDecrease}>-</button>
+                            <span>{quantity}</span>
+                            <button onClick={handleIncrease}>+</button>
+                        </div>
                         <Link to={`/cart`} className='ProductLink'>
                             <button>Agregar al Carrito</button>
                         </Link>
@@ -116,9 +131,7 @@ function ProductView(props) {
                 </div>
             </div>
 
-            <div className='productDescription'>
-                    <p>{product.description}</p>
-            </div>
+            
 
         </div>
     );

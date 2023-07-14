@@ -87,6 +87,11 @@ const CompShowLogin = () => { // Se define el componente.
                     Crear una cuenta
                   </Link>
                 </div>
+                <div className="register-link">
+                  <Link to="/" className='register'>
+                    <button className='btn-volver'>Volver</button>
+                  </Link>
+                </div>
             </form>
         </div>
     ); 
