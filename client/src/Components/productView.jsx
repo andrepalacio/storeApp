@@ -32,6 +32,7 @@ function ProductView(props) {
       setSelectedImage(module1.default);
       setImage1(module1.default);
       setImage2(module2.default);
+      
       setImage3(module3.default);
 
     

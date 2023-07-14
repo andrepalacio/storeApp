@@ -16,8 +16,8 @@ const Header = (props) => {
     localStorage.removeItem('username')
     localStorage.removeItem('accessToken')
     localStorage.removeItem('id')
-
     navigate('/')
+    window.location.reload()
   };
 
 

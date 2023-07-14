@@ -22,12 +22,11 @@ router.post('/register',sigin)
 
 router.post('/login', login);
 
-// router.post('/purchase', checkInventory)
-router.put('/update', update);
-
 router.get('/administrator', administrator);
 
-router.post('/checkout', createSession)
+router.put('/administrator', update);
+
+router.get('/create-checkout-session', createSession)
 
 router.get('/success')
 
