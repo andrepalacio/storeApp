@@ -1,6 +1,6 @@
 import '../Styles/register.css';
 import React, {useState} from 'react'
-import logo from '../Images/appImages/logo.jpeg';
+import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 
@@ -54,56 +54,56 @@ const Register = () => {
 
   return (
     <div className="container-register">
-      <div className="container-logo-login">
-        <img className="logo-login" alt='Imagen Logo' src={logo} />
-      </div>
+        <div className="container-logo-login">
+          <img className="logo-login" alt='Imagen Logo' src={theLegoGarage} />
+        </div>
 
-    <form className="formulario" onSubmit={handleSubmit}>
-      <div className="titulo-register">
-        <h1>Register</h1>
-      </div>
+      <form className="formulario" onSubmit={handleSubmit}>
+        {/* <div className="titulo-register">
+          <h1 className='textHeader'>Crear cuenta</h1>
+        </div> */}
 
 
-    <div className="container-inp">
-      <div>
-        <label htmlFor="name">Nombre:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={datos.name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={datos.email}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Contraseña:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={datos.password}
-          onChange={handleChange}
-          required
-        />
-      </div>
+      <div className="container-inp">
+          <div>
+            <label htmlFor="name">Nombre:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={datos.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={datos.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={datos.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-      </div>
-      <div className="boton">
-      <button className="btm-submit" type="submit">Enviar</button>
-      </div>
-    </form>
+        </div>
+        <div className="boton">
+        <button className="btm-submit" type="submit">Crear cuenta</button>
+        </div>
+      </form>
     </div>
   );
 };

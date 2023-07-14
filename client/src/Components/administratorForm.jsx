@@ -5,7 +5,30 @@ import React, {useState} from 'react';
 function AdministratorForm(admin) {
 
   const [formData, setFormData] = useState(admin.admin[0]);
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const fetchData = async () => {
+      console.log(formData)
+      try {
+        const response = await fetch('http://localhost:9000/administrator', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  };
 
   const handleInputChange = (e) => {
     if (e && e.target) {
@@ -17,13 +40,13 @@ function AdministratorForm(admin) {
     }
   };
 
-  const toggleShowPassword = () => {
-    setShowPassword((prevState) => !prevState);
-  };
+  // const toggleShowPassword = () => {
+  //   setShowPassword((prevState) => !prevState);
+  // };
 
   return (
     <div className='adminData'>
-      <form method='post'>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'>Nombre</label>
           <input type='text' name='name' id='name' disabled value={formData.name} />
@@ -34,12 +57,12 @@ function AdministratorForm(admin) {
         </div>
         <div>
           <label htmlFor='password'>Contraseña</label>
-          <input type='password' name='password' id='password' value={formData.password} onChange={handleInputChange} />
+          <input type='text' name='password' id='password' value={formData.password} onChange={handleInputChange} />
         </div>
-        <div>
+        {/* <div>
           <input type='checkbox' id='showPassword' checked={showPassword} onChange={toggleShowPassword} />
           <label htmlFor='showPassword'>Mostrar contraseña</label>
-        </div>
+        </div> */}
         <div>
           <label htmlFor='phone'>Teléfono</label>
           <input type='tel' name='phone' id='phone' value={formData.phone} onChange={handleInputChange}/>

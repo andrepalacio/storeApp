@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react'
 import '../Styles/header.css';
 import { BsPerson, BsBag, BsFillArrowLeftCircleFill } from 'react-icons/bs';
-import logo from '../Images/appImages/logo.jpeg'; // Importa la imagen
 import { Link, useNavigate, } from 'react-router-dom';
+import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 
 const Header = (props) => {
 
@@ -30,18 +30,16 @@ const Header = (props) => {
   return (
     <header className="container-header">
 
-      <a href='/'>
-        <div className="logo">
-          <img src={logo} alt="Logo de la tienda" /> {/* Utiliza la imagen */}
-        </div>
-      </a>
-
-      <div className="title">
-        <a href='#'>THE LEGO GARAGE</a>
+      <div className="claseDeEnvio">
+        <h2 className='textHeader'>Envio gratis por compras superiores a $400.000</h2>
       </div>
-      
-        
 
+      <div className="containerMenu">
+        <a href='/'>
+          <div className="logo">
+            <img src={theLegoGarage} alt="Logo de la tienda" /> {/* Utiliza la imagen */}
+          </div>
+        </a>
 
       <div className="actions">
         <div className='nameMessage'>

@@ -35,8 +35,8 @@ export const createSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items,
     mode: 'payment',
-    success_url: 'http://localhost:9000/success',
-    cancel_url: 'http://localhost:9000/cancel',
+    success_url: 'http://localhost:3000/success',
+    cancel_url: 'http://localhost:3000/cancel',
   })
   res.json({result:session})
 }
@@ -180,23 +180,6 @@ export const calculatePrice = (req, res) => {
     checkInventory(purchaseList[countPos].minStock);
   }
   return prices;
-}
-  
-export const update = (req, res, ) => {
-  const id = req.params.id;
-  const requestData = req.body;
-
-  const query = 'UPDATE products SET name = ?, description = ?, amount = ?, price = ?, minStock = ? WHERE id = ?';
-  const values = [requestData.name, requestData.description, requestData.amount, requestData.price, requestData.minStock, id]
-
-  db.query(query, values, (err, result) => {
-    if (err) {
-      console.error('Error al actualizar el registo', err);
-      res.status(500).json({ error: 'Error al actualizar el registro' });
-    } else {
-      res.json({ message: 'Registro actualizado exitosamente' })
-    }
-  })
 }
 
 
