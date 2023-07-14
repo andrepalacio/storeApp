@@ -17,27 +17,27 @@ const db = mysql.createConnection({
 
 
 
-// export const createSession = async (req, res) => {
-//   const session = await stripe.checkout.sessions.create({
-//     line_items: [
-//       {
-//         price_data: {
-//           product_data: {
-//             name: 'Carrito de productos',
-//             description: 'Cobro por productos en el carrito',
-//           },
-//           currency: 'usd',
-//           unit_amount: 20000, //200.00
-//         },
-//         quantity: 1
-//       }
-//     ],
-//     mode: 'payment',
-//     success_url: 'http://localhost:9000/success',
-//     cancel_url: 'http://localhost:9000/cancel',
-//   })
-//   return res.json({result:session})
-// }
+export const createSession = async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          product_data: {
+            name: 'Carrito de productos',
+            description: 'Cobro por productos en el carrito',
+          },
+          currency: 'usd',
+          unit_amount: 20000, //200.00
+        },
+        quantity: 1
+      }
+    ],
+    mode: 'payment',
+    success_url: 'http://localhost:9000/success',
+    cancel_url: 'http://localhost:9000/cancel',
+  })
+  return res.json({result:session})
+}
 
 function generateAccessToken(user) {
   return jwt.sign(user, secretWord, { expiresIn: '100m' })
@@ -59,11 +59,6 @@ export const login = (req, res) => {
         const user = { username: requestData.name }
 
         const accesToken = generateAccessToken(user);
-
-        //res.header('authorization', accesToken).json({
-        //message: 'Usuario autenticado',
-        //token: accesToken
-        //})
 
         // Almacena el token en el localStorage
 
