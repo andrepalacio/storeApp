@@ -2,11 +2,7 @@ import '../Styles/register.css';
 import React, {useState} from 'react'
 import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 import axios from 'axios'
-<<<<<<< HEAD
 import {Link, useNavigate} from 'react-router-dom'
-=======
-import { Link } from 'react-router-dom';
->>>>>>> origin/santi_aux
 
 const Register = () => {
   const [datos, setDatos] = useState({

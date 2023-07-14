@@ -29,11 +29,7 @@ router.get('/administrator', administrator);
 
 router.put('/administrator', update);
 
-router.get('/create-checkout-session', createSession)
-
-router.get('/success')
-
-router.get('/cancel')
+router.post('/checkout', createSession)
 
 router.get('/productsList', getProducts)
 
