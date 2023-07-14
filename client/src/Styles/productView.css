@@ -49,12 +49,14 @@ img {
 
 .extraImages{
     display: flex;
+    flex-direction: column;
+
+    
 }
 
 .extraImages img{
-    width: 200px;
+    width: 100px;
     height: auto;
-    margin: 0px;
     border: 1px solid #ccc;
     cursor: pointer;
 }
@@ -83,3 +85,9 @@ img {
     position: relative;
     top: 0px;
   }
+
+#Image1,
+#Image2,
+#Image3{
+    display: none;
+}
