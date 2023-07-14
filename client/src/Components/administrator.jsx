@@ -10,7 +10,7 @@ function Administrator() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:9000/administrator');
+      const response = await fetch(`http://localhost:9000/administrator/${localStorage.getItem('id')}}`);
       const data = await response.json();
       setAdmin(data);
     } catch (error) {
