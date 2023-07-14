@@ -75,8 +75,6 @@ function ProductView(props) {
             }).catch(error => {
                 console.log(error);
             });
-
-
             navigate('/cart')
         }else{
             navigate('/login')
