@@ -1,58 +1,18 @@
 import React from 'react';
 import '../Styles/productView.css';
-<<<<<<< HEAD
-import { useParams, useNavigate } from 'react-router-dom';
-import Data from '../data.json';
-import Header from './header';
-
-function ProductView(props) {
-  const navigate = useNavigate();
-
-  const idProduct = useParams();
-  const [data] = useState(Data);
-  const [quantity, setQuantity] = useState(1);
-=======
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import  Data from '../data.json';
 import { useState, useEffect } from 'react';
-import Header from './header'; 
+// import Header from './header'; 
 
 
 
-function ProductView(props) {
->>>>>>> origin/main
-
-    const navigate = useNavigate();
+function ProductView() {
 
     const idProduct = useParams();
     console.log(idProduct);
 
-<<<<<<< HEAD
-  const handleIncrease = () => {
-    if (quantity < product.amount) {
-      setQuantity(quantity + 1);
-    }
-  };
-
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const handleClick = () => {
-    if (localStorage.getItem('accessToken')){
-        navigate('/cart')
-    }else{
-        navigate('/login')
-    }
-}
-=======
-    const [data,setData] = useState(Data);
-
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
+    const [data] = useState(Data);
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
@@ -76,11 +36,10 @@ function ProductView(props) {
     useEffect(() => {
         handleImportImages();
     }, []);
-    // console.log(image1, image2, image3);
 
    
     data.products.map((current) => {
-        if (current.id == idProduct.id){
+        if (current.id === idProduct.id){
             product = {
                 "id": current.id,
                 "name": current.name,
@@ -91,11 +50,16 @@ function ProductView(props) {
             console.log(product);
         }
     });
+
     const [selectedImage, setSelectedImage] = useState(image1);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.value);
       };
+
+
+
+
 
     return(
         <div className='mainContainer'>
@@ -139,8 +103,9 @@ function ProductView(props) {
                     <div className='productButton'>
                         <div></div>
                         <input type='number'/>
-                        
-                            <button onClick={handleClick}>Agregar al Carrito</button>
+                        <Link to={`/cart`} className='ProductLink'>
+                            <button>Agregar al Carrito</button>
+                        </Link>
                     </div>
 
                 </div>
@@ -149,45 +114,11 @@ function ProductView(props) {
             <div className='productDescription'>
                     <p>{product.description}</p>
             </div>
->>>>>>> origin/main
 
         </div>
     );
     
 
-<<<<<<< HEAD
-        <div className="productInfo">
-          <div className="productName">
-            <h1>{product.name}</h1>
-          </div>
-          <div className="productPrice">
-            <h2>{product.price}</h2>
-          </div>
-          <div className="productAmount">
-            <h3>Disponibles: {product.amount}</h3>
-          </div>
-          <div className="productQuantity">
-            <button className="quantityButton" onClick={handleDecrease}>
-              -
-            </button>
-            <input type="number" value={quantity} readOnly />
-            <button className="quantityButton" onClick={handleIncrease}>
-              +
-            </button>
-          </div>
-          <div className="productButton">
-            <button onClick={handleClick}>Agregar al Carrito</button>
-          </div>
-        </div>
-      </div>
-
-      <div className="productDescription">
-        <p>{product.description}</p>
-      </div>
-    </div>
-  );
-=======
->>>>>>> origin/main
 }
 
 export default ProductView;
