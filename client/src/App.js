@@ -11,7 +11,6 @@ import Login from './Components/login';
 import ProductView from './Components/productView';
 import Cart from './Components/cart';
 import Administrator from './Components/administrator';
-import Products2 from './Components/products2';
 import Rechazado from './Components/rechazado';
 import Confirmacion from './Components/confirmacion';
 
@@ -56,7 +55,14 @@ function App() {
             } />
         <Route path='/admin' element={<Administrator />} />
         <Route path='/viewProduct' element={<ProductView />} />
-        <Route path='/product/:id' element={<ProductView />}/>
+        <Route path='/product/:id' element={
+          <>  
+            <Header />
+            <div className='product-view-container'>
+              <ProductView />
+            </div>
+          </>
+        }/>
         <Route path='/cancel' element={<Rechazado />} />
         <Route path='/success' element={<Confirmacion />} />
       </Routes>

@@ -15,12 +15,6 @@ function ProductView(props) {
 
     const [data,setData] = useState(Data);
 
-    const [quantity, setQuantity] = useState(1);
-
-    // let image1 = `../Images/|productsImages/product${idProduct}/1.jpg`;
-    // let image2 = `../Images/|productsImages/product${idProduct}/2.jpg`;
-    // let image3 = `../Images/|productsImages/product${idProduct}/3.jpg`;
-
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
     const [image3, setImage3] = useState(null);
