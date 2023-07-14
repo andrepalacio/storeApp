@@ -6,8 +6,21 @@ import Data from '../data.json';
 import '../Styles/products.css';
 import { useState } from 'react';
 
+import axios from 'axios';
+
 
 const Products = () => {
+
+    axios.get("http//localhost:9000/productsList")
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+        
+    
+
 
     const [data, setData] = useState(Data);
     

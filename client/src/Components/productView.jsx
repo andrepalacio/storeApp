@@ -36,9 +36,8 @@ function ProductView(props) {
     useEffect(() => {
         handleImportImages();
     }, []);
-    // console.log(image1, image2, image3);
 
-   
+    
     data.products.map((current) => {
         if (current.id == idProduct.id){
             product = {

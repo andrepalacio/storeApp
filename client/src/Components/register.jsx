@@ -2,6 +2,7 @@ import '../Styles/register.css';
 import React, {useState} from 'react'
 import theLegoGarage from '../Images/appImages/theLegoGarage.png'; // Importa la imagen
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [datos, setDatos] = useState({
@@ -97,7 +98,12 @@ const Register = () => {
 
         </div>
         <div className="boton">
-        <button className="btm-submit" type="submit">Crear cuenta</button>
+          <button className="btm-submit" type="submit">Crear cuenta</button>
+        </div>
+        <div className="register-link">
+          <Link to="/login" className='register'>
+            <button className='btn-volver'>Volver</button>
+          </Link>
         </div>
       </form>
     </div>

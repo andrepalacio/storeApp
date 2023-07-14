@@ -83,15 +83,16 @@ const CompShowLogin = () => { // Se define el componente.
                     <input type="submit" className="btn-submit" value="Entrar" />
                 </div>
                 <div className="register-link">
-                  <Link to="/register" className='register'>
-                    Crear una cuenta
-                  </Link>
-                </div>
-                <div className="register-link">
                   <Link to="/" className='register'>
                     <button className='btn-volver'>Volver</button>
                   </Link>
                 </div>
+                <div className="register-link">
+                  <Link to="/register" className='register'>
+                    Crear una cuenta
+                  </Link>
+                </div>
+                
             </form>
         </div>
     ); 

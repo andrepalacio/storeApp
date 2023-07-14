@@ -6,6 +6,9 @@ import {checkInventory, login, sigin, createSession} from "../controller/formCon
 
 import {administrator, update} from "../controller/adminControl.js"
 
+import { getProducts } from "../controller/productControl.js"
+
+
 
 const router = Router()
 
@@ -31,5 +34,7 @@ router.get('/create-checkout-session', createSession)
 router.get('/success')
 
 router.get('/cancel')
+
+router.get('/productsList', getProducts)
 
 export default router
