@@ -46,17 +46,17 @@ function AdministratorForm(admin) {
 
   return (
     <div className='adminData'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="container-inp">
         <div>
-          <label htmlFor='name'>Nombre</label>
+          <label htmlFor='name'>Nombre:</label>
           <input type='text' name='name' id='name' disabled value={formData.name} />
         </div>
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email'>Email:</label>
           <input type='email' name='email' id='email' value={formData.email} onChange={handleInputChange}/>
         </div>
         <div>
-          <label htmlFor='password'>Contraseña</label>
+          <label htmlFor='password'>Contraseña:</label>
           <input type='text' name='password' id='password' value={formData.password} onChange={handleInputChange} />
         </div>
         {/* <div>
@@ -64,14 +64,17 @@ function AdministratorForm(admin) {
           <label htmlFor='showPassword'>Mostrar contraseña</label>
         </div> */}
         <div>
-          <label htmlFor='phone'>Teléfono</label>
+          <label htmlFor='phone'>Teléfono:</label>
           <input type='tel' name='phone' id='phone' value={formData.phone} onChange={handleInputChange}/>
         </div>
         <div>
-          <label htmlFor='address'>Dirección</label>
+          <label htmlFor='address'>Dirección:</label>
           <input type='text' name='address' id='address' value={formData.address} onChange={handleInputChange}/>
         </div>
-        <button type='submit'>Editar</button>
+
+        <div className="container-submit"> 
+          <button className="btn-submit" type='submit'>Editar</button>
+        </div>
       </form>
     </div>
   )
