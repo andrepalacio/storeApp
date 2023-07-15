@@ -17,10 +17,10 @@ const PORT = process.env.PORT || 9000;
 app.use(bodyParser.json())
 app.use(cors())
 
-app.set('routes' , join(__dirname, 'routes'))
+app.set('views' , join(__dirname, 'views'))
 app.use(indexRoutes)
 
-app.use(express.static(join(__dirname, '../public')))
+app.use(express.static(join(__dirname, 'public')))
 
 
 app.listen(PORT, () => {

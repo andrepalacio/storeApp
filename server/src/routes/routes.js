@@ -17,7 +17,7 @@ router.use(bodyParser.json())
 router.use(cors())
 
 router.get("/", (req, res) => {
-    res.sendFile(path.resolve("../index.html"));
+    res.render("index");
   });
 
 
