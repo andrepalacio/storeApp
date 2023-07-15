@@ -8,7 +8,7 @@ import {administrator, update} from "../controller/adminControl.js"
 
 import { getProducts, getProductsById } from "../controller/productControl.js"
 
-
+import path from "path"
 
 const router = Router()
 
