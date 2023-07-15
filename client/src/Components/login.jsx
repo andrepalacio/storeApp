@@ -44,7 +44,7 @@ const CompShowLogin = () => { // Se define el componente.
               navigate('/');
               window.location.reload();
             } else if (response.data.rol === 'admin'){
-              //navigate('/admin')
+              navigate('/admin')
               window.location.reload();
             }
           }else{
