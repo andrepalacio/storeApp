@@ -9,7 +9,7 @@ function Administrator() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:9000/administrator');
+      const response = await fetch('https://the-lego-garage-server.onrender.com/administrator');
       const data = await response.json();
       setAdmin(data);
     } catch (error) {

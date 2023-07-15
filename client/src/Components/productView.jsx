@@ -54,7 +54,7 @@ function ProductView(props) {
 
     const fetchProduct = async () => {
         try {
-          const response = await fetch(`http://localhost:9000/productsList/${idProduct.id}`);
+          const response = await fetch(`https://the-lego-garage-server.onrender.com/productsList/${idProduct.id}`);
           const products = await response.json();
           setProducts(products[0]);
           console.log(products[0]);

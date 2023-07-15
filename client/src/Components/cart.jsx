@@ -46,7 +46,7 @@ function Cart() {
       ]
     }
     try {
-      axios.post('http://localhost:9000/checkout', formData)
+      axios.post('https://the-lego-garage-server.onrender.com/checkout', formData)
         .then(res => {
           console.log(res.data.result);
           if(res.data.result) {

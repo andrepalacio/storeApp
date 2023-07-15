@@ -15,7 +15,7 @@ const Products = () => {
 
     const fetchData = async () => {
         try {
-          const response = await fetch('http://localhost:9000/productsList');
+          const response = await fetch('https://the-lego-garage-server.onrender.com/productsList');
           const products = await response.json();
           setData(products);
         } catch (error) {

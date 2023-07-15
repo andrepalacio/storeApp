@@ -13,7 +13,7 @@ function AdministratorForm(admin) {
     const fetchData = async () => {
       console.log(formData)
       try {
-        const response = await fetch('http://localhost:9000/administrator', {
+        const response = await fetch('https://the-lego-garage-server.onrender.com/administrator', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

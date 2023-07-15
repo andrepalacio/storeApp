@@ -30,7 +30,7 @@ const Register = () => {
       password: datos.password
     };
 
-    axios.post('http://localhost:9000/register', formData)
+    axios.post('https://the-lego-garage-server.onrender.com/register', formData)
     .then((response) => {
       const data = response.data;
       const validation = response.validation

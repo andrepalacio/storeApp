@@ -30,7 +30,7 @@ const CompShowLogin = () => { // Se define el componente.
           password: datos.password
         };
     
-        axios.post('http://localhost:9000/login', formData)
+        axios.post('https://the-lego-garage-server.onrender.com/login', formData)
         .then((response) => {
           console.log(response.data);
           localStorage.setItem('accessToken', response.data.accessToken);
