@@ -7,7 +7,8 @@ import cors from 'cors'
 import indexRoutes from "./routes/routes.js"
 
 const app = express();
-const PORT = 9000;
+//const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 
 app.use(bodyParser.json())
 app.use(cors())
