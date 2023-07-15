@@ -20,6 +20,8 @@ app.use(cors())
 app.set('views' , join(__dirname, 'views'))
 app.use(indexRoutes)
 
+app.set('view engine', 'ejs')
+
 app.use(express.static(join(__dirname, 'public')))
 
 
